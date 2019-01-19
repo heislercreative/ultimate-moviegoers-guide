@@ -6,39 +6,24 @@ import * as actions from '../actions/movieActions'
 import MovieBasic from '../components/MovieBasic'
 
 class MoviesList extends Component {
-  constructor() {
-    super()
-    this.state = {
-      products: []
-    }
-  }
 
   componentWillMount() {
     this.props.actions.fetchNowPlaying()
-  //   // Move fetch logic to Redux action
-  //   const api_key = process.env.REACT_APP_API_KEY
-  //   const proxyURL = 'https://cors-anywhere.herokuapp.com/' //Due to fetch CORS error, could be avoided if requested server-side
-  //   let targetURL = `https://api.themoviedb.org/3/movie/now_playing/?api_key=${api_key}`
-  //   fetch(proxyURL + targetURL)
-  //     .then(resp => resp.json())
-  //     .then(movies => {
-  //       this.setState({
-  //         movies: movies.results
-  //       })
-  //       console.log(this.state.movies)
-  //     })
-  //     .then()
-  //     .catch(e => {
-  //       console.log(e)
-  //       return e
-  //     })
   }
 
   render() {
     return (
       <div>
+        {this.props.movies.map(movie =>
           <MovieBasic
+            key={movie.id}
+            title={movie.title}
+            release_date={movie.release_date}
+            poster={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`}
+            rating={movie.vote_average}
+            overview={movie.overview}
           />
+        )}
       </div>
     )
   }
