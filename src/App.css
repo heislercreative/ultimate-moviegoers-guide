@@ -16,3 +16,34 @@
 .App-link {
   color: #61dafb;
 }
+
+.list-container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.movie-div {
+  float: left;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: left;
+  width: 100%;
+  border-radius: 2px;
+  box-shadow: 2px 2px 10px lightgrey;
+}
+
+.poster-thumb {
+  float: left;
+  display: inline;
+  max-width: 180px;
+  margin-bottom: 0px;
+}
+
+.movie-basic-details {
+  float: left;
+  display: inline;
+  margin: 20px;
+}
