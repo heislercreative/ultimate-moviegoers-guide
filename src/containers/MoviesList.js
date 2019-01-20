@@ -41,7 +41,7 @@ class MoviesList extends Component {
             key={movie.id}
             title={movie.title}
             release_date={movie.release_date}
-            poster={`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`}
+            poster={movie.poster_path}
             rating={movie.vote_average * 10}
             overview={movie.overview}
           />
