@@ -19,6 +19,7 @@
 
 .list-container {
   width: 90%;
+  max-width: 950px;
   margin: 40px auto;
 }
 
@@ -45,14 +46,16 @@
 }
 
 .movie-basic-details {
+  height: 200px;
   text-align: left;
-  display: inline;
-}
-
-.movie-basic-details h3 {
-  margin-top: 5px;
 }
 
 .movie-basic-details h4 {
-  margin-top: 5px;
+  margin-top: -5px;
+  font-weight: 500;
+}
+
+.movie-basic-details p {
+  height: 60px;
+  overflow-y: auto;
 }

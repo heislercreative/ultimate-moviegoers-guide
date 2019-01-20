@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/movieActions'
-import { Button, Icon } from 'semantic-ui-react'
 
 import MovieBasic from '../components/MovieBasic'
 import ListNavigation from '../components/ListNavigation'

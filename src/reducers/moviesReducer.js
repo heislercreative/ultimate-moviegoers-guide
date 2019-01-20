@@ -1,4 +1,6 @@
 export default function moviesReducer(state = {
+  now_playing_max: '',
+  now_playing_min: '',
   current_page: '',
   total_results: '',
   total_pages: '',
@@ -15,10 +17,17 @@ export default function moviesReducer(state = {
         edited.push(m)
       })
       return {
+        ...state,
         current_page: action.payload.page,
         total_results: action.payload.total_results,
         total_pages: action.payload.total_pages,
         movies: edited
+      }
+    case 'FETCH_NOW_PLAYING_DATES':
+      return {
+        ...state,
+        now_playing_max: action.payload.maximum,
+        now_playing_min: action.payload.minimum
       }
 
     default:

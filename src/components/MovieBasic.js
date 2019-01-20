@@ -6,9 +6,9 @@ const MovieBasic = ({ title, release_date, poster, rating, overview }) => {
     <Segment floated='left' className='movie-card'>
       {poster && <Image src={poster} size='small' floated='left' className='poster-thumb'/>}
       <div className='movie-basic-details'>
-        <h2>{title}</h2>
-        {rating > 0 && <h3>Rating: {rating}%</h3>}
-        {rating == 0 && <h3>Not Rated</h3>}
+        <h3>{title}</h3>
+        {rating > 0 && <h4>Rating: {rating}%</h4>}
+        {rating === 0 && <h4>Not Rated</h4>}
         <h4>{release_date}</h4>
         <p>{overview}</p>
       </div>
