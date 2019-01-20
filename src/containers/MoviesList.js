@@ -5,6 +5,7 @@ import * as actions from '../actions/movieActions'
 import { Button, Icon } from 'semantic-ui-react'
 
 import MovieBasic from '../components/MovieBasic'
+import ListNavigation from '../components/ListNavigation'
 
 class MoviesList extends Component {
 
@@ -28,6 +29,13 @@ class MoviesList extends Component {
 
     return (
       <div className='list-container'>
+        <ListNavigation
+          current_page={current_page}
+          total_pages={total_pages}
+          total_results={total_results}
+          previousPage={this.previousPage}
+          nextPage={this.nextPage}
+        />
         {movies.map(movie =>
           <MovieBasic
             key={movie.id}
@@ -38,18 +46,13 @@ class MoviesList extends Component {
             overview={movie.overview}
           />
         )}
-        <h3>Page {current_page} of {total_pages} &nbsp;&nbsp;({total_results} results)</h3>
-
-        {(current_page > 1) &&
-          <Button icon labelPosition='left' onClick={this.previousPage}>
-            <Icon name='left arrow' />
-            Previous
-          </Button>}
-        {(current_page >= 1 && current_page < total_pages) &&
-           <Button icon labelPosition='right' onClick={this.nextPage}>
-           <Icon name='right arrow' />
-            Next
-           </Button>}
+        <ListNavigation
+          current_page={current_page}
+          total_pages={total_pages}
+          total_results={total_results}
+          previousPage={this.previousPage}
+          nextPage={this.nextPage}
+        />
       </div>
     )
   }
