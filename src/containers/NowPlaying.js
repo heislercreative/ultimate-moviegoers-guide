@@ -28,10 +28,12 @@ class NowPlaying extends Component {
 
     return (
       <MoviesList
+        type={'now_playing'}
         movies={movies}
         current_page={current_page}
         total_pages={total_pages}
         total_results={total_results}
+        reFetch={this.reFetch}
         previousPage={this.previousPage}
         nextPage={this.nextPage}
       />

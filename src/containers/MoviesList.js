@@ -2,11 +2,13 @@ import React from 'react'
 
 import MovieBasic from '../components/MovieBasic'
 import ListNavigation from '../components/ListNavigation'
+import SortList from '../components/SortList'
 
-const MoviesList = ({ movies, current_page, total_pages, total_results, previousPage, nextPage }) => {
+const MoviesList = ({ movies, current_page, total_pages, total_results, type, previousPage, nextPage }) => {
 
   return (
     <div className='list-container'>
+      <SortList type={type}/>
       <ListNavigation
         current_page={current_page}
         total_pages={total_pages}
