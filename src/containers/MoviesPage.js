@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-import MoviesList from './MoviesList'
+import NowPlaying from './NowPlaying'
 
 class MoviesPage extends Component {
   render() {
     return (
-      <MoviesList />
+      <NowPlaying />
     )
   }
 }

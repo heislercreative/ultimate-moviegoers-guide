@@ -38,7 +38,7 @@ class MovieBasic extends Component {
           </div>
         </Segment>
         <Button onClick={this.handleClick}>More Info</Button>
-        {this.state.showComponent ?
+        {this.state.showComponent &&
           <MovieFull
             id={id}
             title={title}
@@ -46,8 +46,7 @@ class MovieBasic extends Component {
             poster={poster}
             rating={rating}
             overview={overview}
-          /> :
-          null
+          />
         }
       </div>
     )
