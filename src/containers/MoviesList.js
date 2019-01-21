@@ -8,7 +8,7 @@ import ListNavigation from '../components/ListNavigation'
 
 class MoviesList extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.actions.fetchNowPlaying()
   }
 
@@ -38,6 +38,7 @@ class MoviesList extends Component {
         {movies.map(movie =>
           <MovieBasic
             key={movie.id}
+            id={movie.id}
             title={movie.title}
             release_date={movie.release_date}
             poster={movie.poster_path}

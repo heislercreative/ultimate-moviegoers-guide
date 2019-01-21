@@ -29,6 +29,21 @@ export function fetchNowPlaying(page) {
   }
 }
 
+export function fetchCredits(id) {
+  let targetURL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`
+
+  console.log(targetURL)
+
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_CREDITS' })
+    return fetch(proxyURL + targetURL)
+      .then(resp => resp.json())
+      .then(credits => dispatch({
+        type: 'FETCH_CREDITS',
+        payload: credits
+      }))
+  }
+}
 
 // export function fetchNowPlaying(min, max, page) {
 //   let targetURL = `https://api.themoviedb.org/3/discover/movie/?api_key=${api_key}&region=US&language=en-US&with_release_type=2|3&release_date.gte=${min}&release_date.lte=${max}&page=${page}`

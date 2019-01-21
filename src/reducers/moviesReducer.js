@@ -1,10 +1,11 @@
 export default function moviesReducer(state = {
-  now_playing_max: '',
-  now_playing_min: '',
   current_page: '',
   total_results: '',
   total_pages: '',
-  movies: []
+  movies: [],
+  selected_movie: {
+    credits: {}
+  }
 }, action) {
   switch (action.type) {
     case 'FETCH_MOVIES':
@@ -23,12 +24,19 @@ export default function moviesReducer(state = {
         total_pages: action.payload.total_pages,
         movies: edited
       }
-    case 'FETCH_NOW_PLAYING_DATES':
+    case 'FETCH_CREDITS':
       return {
         ...state,
-        now_playing_max: action.payload.maximum,
-        now_playing_min: action.payload.minimum
+        selected_movie: {
+          credits: action.payload
+        }
       }
+    // case 'FETCH_NOW_PLAYING_DATES':
+    //   return {
+    //     ...state,
+    //     now_playing_max: action.payload.maximum,
+    //     now_playing_min: action.payload.minimum
+    //   }
 
     default:
       return state
