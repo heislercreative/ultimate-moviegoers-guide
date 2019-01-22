@@ -25,6 +25,7 @@ class NowPlaying extends Component {
     const current_page = this.props.current_page
     const total_pages = this.props.total_pages
     const total_results = this.props.total_results
+    const sort_title = this.props.sort_title
 
     return (
       <MoviesList
@@ -33,6 +34,7 @@ class NowPlaying extends Component {
         current_page={current_page}
         total_pages={total_pages}
         total_results={total_results}
+        sort_title={sort_title}
         reFetch={this.reFetch}
         previousPage={this.previousPage}
         nextPage={this.nextPage}
@@ -44,6 +46,7 @@ class NowPlaying extends Component {
 function mapStateToProps(state) {
   return {
     sort_by: state.sort_by,
+    sort_title: state.sort_title,
     current_page: state.current_page,
     total_results: state.total_results,
     total_pages: state.total_pages,

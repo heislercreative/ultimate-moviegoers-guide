@@ -1,5 +1,6 @@
 export default function moviesReducer(state = {
   sort_by: '',
+  sort_title: 'Most Popular',
   current_page: '',
   total_results: '',
   total_pages: '',
@@ -33,9 +34,21 @@ export default function moviesReducer(state = {
         }
       }
     case 'SET_SORT_METHOD':
+      let sort_title = ''
+      const sort_by = action.payload
+      if (sort_by === 'popularity.desc') {
+        sort_title = 'Most Popular'
+      } else if (sort_by === 'vote_average.desc') {
+        sort_title = 'Top Rated'
+      } else if (sort_by === 'release_date.desc') {
+        sort_title = 'Release Date (Most Recent)'
+      } else if (sort_by === 'release_date.asc') {
+        sort_title = 'Release Date (Least Recent)'
+      }
       return {
         ...state,
-        sort_by: action.payload
+        sort_by: sort_by,
+        sort_title: sort_title
       }
     // case 'FETCH_NOW_PLAYING_DATES':
     //   return {
