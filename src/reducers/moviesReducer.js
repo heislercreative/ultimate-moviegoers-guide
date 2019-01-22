@@ -14,7 +14,7 @@ export default function moviesReducer(state = {
       action.payload.results.map(movie => {
         let m = {...movie, poster_path: `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`}
         if (m.poster_path.includes('null')) {
-          m = {...movie, poster_path: 'https://heislercreative.com/wp-content/uploads/2019/01/blank_poster.jpg'}
+          m = {...movie, poster_path: null}
         }
         edited.push(m)
       })

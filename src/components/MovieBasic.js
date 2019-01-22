@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Segment, Image, Button } from 'semantic-ui-react'
 import MovieFull from './MovieFull'
+import blank_poster from '../images/blank_poster.jpg'
 
 class MovieBasic extends Component {
 
@@ -28,7 +29,10 @@ class MovieBasic extends Component {
     return (
       <div>
         <Segment floated='left' className='movie-card'>
-          <Image src={poster} size='small' floated='left' className='poster-thumb'/>
+          {poster ?
+            <Image src={poster} size='small' floated='left' className='poster-thumb'/> :
+            <Image src={blank_poster} size='small' floated='left' className='poster-thumb'/>
+          }
           <div className='movie-basic-details'>
             <h3>{title}</h3>
             {rating > 0 && <h4>Rating: {rating}%</h4>}
