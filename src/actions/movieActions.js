@@ -10,7 +10,7 @@ export function fetchNowPlaying(page, sort_by) {
     return fetch(proxyURL + targetURL)
       .then(resp => resp.json())
       .then(hash => {
-        let targetURL = `https://api.themoviedb.org/3/discover/movie/?api_key=${api_key}&region=US&language=en-US&with_release_type=2|3&release_date.gte=${hash.dates.minimum}&release_date.lte=${hash.dates.maximum}&page=${page}&sort_by=${sort_by}`
+        let targetURL = `https://api.themoviedb.org/3/discover/movie/?api_key=${api_key}&region=US&language=en-US&with_release_type=2|3&primary_release_date.gte=${hash.dates.minimum}&primary_release_date.lte=${hash.dates.maximum}&page=${page}&sort_by=${sort_by}`
 
         console.log(targetURL)
 

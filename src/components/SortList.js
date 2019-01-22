@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dropdown, Button } from 'semantic-ui-react'
+import { Dropdown, Menu } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/movieActions'
@@ -20,9 +20,22 @@ class SortList extends Component {
   render() {
     return(
       <div>
-        <Button onClick={() => this.SortAndRefetch('vote_average.desc')}>
-          Top Rated
-        </Button>
+        <Dropdown text='Sort By'>
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={() => this.SortAndRefetch('vote_average.desc')}>
+              Top Rated
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => this.SortAndRefetch('popularity.desc')}>
+              Most Popular
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => this.SortAndRefetch('release_date.desc')}>
+              Release Date (Most Recent)
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => this.SortAndRefetch('release_date.asc')}>
+              Release Date (Least Recent)
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
     )
   }
