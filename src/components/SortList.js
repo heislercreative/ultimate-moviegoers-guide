@@ -6,15 +6,24 @@ import * as actions from '../actions/movieActions'
 
 class SortList extends Component {
 
-  reFetch = (e, sort_by) => {
+  reFetch = (sort_by) => {
     if (this.props.type === 'now_playing') {
-      this.props.actions.fetchNowPlaying(1, '&sort_by=vote_average.desc')
+      this.props.actions.fetchNowPlaying(1, sort_by)
     }
+  }
+
+  SortAndRefetch = (sort_by) => {
+    this.props.actions.setSortMethod(sort_by)
+    this.reFetch(sort_by)
   }
 
   render() {
     return(
-      <Button onClick={this.reFetch}>Top Rated</Button>
+      <div>
+        <Button onClick={() => this.SortAndRefetch('vote_average.desc')}>
+          Top Rated
+        </Button>
+      </div>
     )
   }
 }

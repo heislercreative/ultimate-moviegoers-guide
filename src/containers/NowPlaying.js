@@ -9,15 +9,15 @@ import MoviesList from './MoviesList'
 class NowPlaying extends Component {
 
   componentDidMount() {
-    this.props.actions.fetchNowPlaying()
+    this.props.actions.fetchNowPlaying(1, this.props.sort_by)
   }
 
   previousPage = (e) => {
-    this.props.actions.fetchNowPlaying(this.props.current_page - 1)
+    this.props.actions.fetchNowPlaying(this.props.current_page - 1, this.props.sort_by)
   }
 
   nextPage = (e) => {
-    this.props.actions.fetchNowPlaying(this.props.current_page + 1)
+    this.props.actions.fetchNowPlaying(this.props.current_page + 1, this.props.sort_by)
   }
 
   render() {
@@ -43,6 +43,7 @@ class NowPlaying extends Component {
 
 function mapStateToProps(state) {
   return {
+    sort_by: state.sort_by,
     current_page: state.current_page,
     total_results: state.total_results,
     total_pages: state.total_pages,

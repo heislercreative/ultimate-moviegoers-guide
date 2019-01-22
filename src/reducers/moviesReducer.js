@@ -1,4 +1,5 @@
 export default function moviesReducer(state = {
+  sort_by: '',
   current_page: '',
   total_results: '',
   total_pages: '',
@@ -30,6 +31,11 @@ export default function moviesReducer(state = {
         selected_movie: {
           credits: action.payload
         }
+      }
+    case 'SET_SORT_METHOD':
+      return {
+        ...state,
+        sort_by: action.payload
       }
     // case 'FETCH_NOW_PLAYING_DATES':
     //   return {
