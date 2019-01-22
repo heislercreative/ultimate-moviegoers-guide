@@ -21,11 +21,21 @@ export function fetchNowPlaying(page, sort_by) {
             payload: movies
           }))
       })
-      // .then()
-      // .catch(e => {
-      //   console.log(e)
-      //   return e
-      // })
+  }
+}
+
+export function fetchSearchResults(query, page) {
+  let q = query.replace('','+')
+  let targetURL = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&include_adult=false&page=${page}&query=${q}`
+
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_MOVIES' })
+    return fetch(proxyURL + targetURL)
+      .then(resp => resp.json())
+      .then(movies => dispatch({
+        type: 'FETCH_MOVIES',
+        payload: movies
+      }))
   }
 }
 
