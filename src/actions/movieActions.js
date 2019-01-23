@@ -27,17 +27,12 @@ export function fetchMovies(type, page, sort_by) {
 }
 
 export function fetchSearchResults(page, query) {
-  let q = query.replace(' ','+')
-  let targetURL = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&include_adult=false&page=${page}&query=${q}`
+  // let q = query.replace(' ','+')
+  let targetURL = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&include_adult=false&page=${page}&query=${query}`
 
   console.log(targetURL)
 
   return (dispatch) => {
-    dispatch({
-      type: 'SET_QUERY',
-      payload: q
-    })
-
     dispatch({ type: 'LOADING_MOVIES' })
     return fetch(proxyURL + targetURL)
       .then(resp => resp.json())
@@ -64,12 +59,22 @@ export function fetchCredits(id) {
   }
 }
 
-// Sorting Action(s)
+// Sort & Search Action(s)
 export function setSortMethod(sort_by) {
   return (dispatch) => {
     dispatch({
       type: 'SET_SORT_METHOD',
       payload: sort_by
+    })
+  }
+}
+
+export function setQuery(query) {
+  let q = query.replace(' ','+')
+  return (dispatch) => {
+    dispatch({
+      type: 'SET_QUERY',
+      payload: q
     })
   }
 }

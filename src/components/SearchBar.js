@@ -21,11 +21,13 @@ class SearchBar extends Component {
 
   handleKeyPress = (e) => {
     if (e.key === 'Enter') {
+      this.props.actions.setQuery(this.state.text)
       this.props.actions.fetchSearchResults(1, this.state.text)
     }
   }
 
   handleClick = () => {
+    this.props.actions.setQuery(this.state.text)
     this.props.actions.fetchSearchResults(1, this.state.text)
   }
 
