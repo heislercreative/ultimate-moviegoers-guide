@@ -5,7 +5,10 @@ import MoviesList from './MoviesList'
 class NowPlaying extends Component {
   render() {
     return (
-      <MoviesList type={'now_playing'} />
+      <div>
+        <h2>Now Playing</h2>
+        <MoviesList type={'now_playing'} />
+      </div>
     )
   }
 }

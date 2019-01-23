@@ -5,7 +5,10 @@ import MoviesList from './MoviesList'
 class SearchResults extends Component {
   render() {
     return (
-      <MoviesList type={'search'} />
+      <div>
+        <h2>Search Results</h2>
+        <MoviesList type={'search'} />
+      </div>
     )
   }
 }

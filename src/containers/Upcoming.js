@@ -5,7 +5,10 @@ import MoviesList from './MoviesList'
 class Upcoming extends Component {
   render() {
     return (
-      <MoviesList type={'upcoming'} />
+      <div>
+        <h2>Upcoming Movies</h2>
+        <MoviesList type={'upcoming'} />
+      </div>
     )
   }
 }

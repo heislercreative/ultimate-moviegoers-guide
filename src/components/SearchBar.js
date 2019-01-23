@@ -35,7 +35,6 @@ class SearchBar extends Component {
         name='text'
         type='text'
         placeholder='Search for a movie'
-        size='large'
         icon={<Icon name='search' link onClick={this.handleClick}/>}
         value={this.state.text}
         onChange={this.handleChange}
