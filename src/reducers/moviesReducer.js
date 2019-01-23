@@ -7,6 +7,7 @@ export default function moviesReducer(state = {
   total_pages: '',
   movies: [],
   selected_movie: {
+    details: {},
     credits: {}
   }
 }, action) {
@@ -29,10 +30,20 @@ export default function moviesReducer(state = {
         movies: edited
       }
 
+    case 'FETCH_MOVIE':
+      return {
+        ...state,
+        selected_movie: {
+          ...state,
+          details: action.payload
+        }
+      }
+
     case 'FETCH_CREDITS':
       return {
         ...state,
         selected_movie: {
+          ...state,
           credits: action.payload
         }
       }

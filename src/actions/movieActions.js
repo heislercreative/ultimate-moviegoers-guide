@@ -27,7 +27,6 @@ export function fetchMovies(type, page, sort_by) {
 }
 
 export function fetchSearchResults(page, query) {
-  // let q = query.replace(' ','+')
   let targetURL = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&include_adult=false&page=${page}&query=${query}`
 
   console.log(targetURL)
@@ -39,6 +38,22 @@ export function fetchSearchResults(page, query) {
       .then(movies => dispatch({
         type: 'FETCH_MOVIES',
         payload: movies
+      }))
+  }
+}
+
+export function fetchMovie(id) {
+  let targetURL = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`
+
+  console.log(targetURL)
+
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_MOVIE' })
+    return fetch(proxyURL + targetURL)
+      .then(resp => resp.json())
+      .then(movie => dispatch({
+        type: 'FETCH_MOVIE',
+        payload: movie
       }))
   }
 }
