@@ -7,7 +7,7 @@ const MoviesList = ({ movies, current_page, total_pages, total_results, type, so
 
   return (
     <div className='list-container'>
-      <h3>{sort_title}</h3>
+      {type !== 'search' && <h3>{sort_title}</h3>}
       <ListNavigation
         current_page={current_page}
         total_pages={total_pages}
@@ -33,6 +33,7 @@ const MoviesList = ({ movies, current_page, total_pages, total_results, type, so
         total_results={total_results}
         previousPage={previousPage}
         nextPage={nextPage}
+        type={type}
       />
     </div>
   )

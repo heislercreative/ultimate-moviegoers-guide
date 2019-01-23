@@ -24,11 +24,18 @@ export function fetchNowPlaying(page, sort_by) {
   }
 }
 
-export function fetchSearchResults(query, page) {
-  let q = query.replace('','+')
+export function fetchSearchResults(page, query) {
+  let q = query.replace(' ','+')
   let targetURL = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&include_adult=false&page=${page}&query=${q}`
 
+  console.log(targetURL)
+
   return (dispatch) => {
+    dispatch({
+      type: 'SET_QUERY',
+      payload: q
+    })
+
     dispatch({ type: 'LOADING_MOVIES' })
     return fetch(proxyURL + targetURL)
       .then(resp => resp.json())

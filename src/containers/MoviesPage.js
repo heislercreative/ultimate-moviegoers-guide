@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 
 import SearchBar from '../components/SearchBar'
 import NowPlaying from './NowPlaying'
+import SearchResults from './SearchResults'
 
 class MoviesPage extends Component {
   render() {
     return (
       <div>
         <SearchBar />
-        <NowPlaying />
+        <SearchResults />
       </div>
     )
   }

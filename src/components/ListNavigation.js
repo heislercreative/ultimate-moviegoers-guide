@@ -19,11 +19,13 @@ const ListNavigation = ({ current_page, total_pages, total_results, previousPage
           <Icon name='right arrow' />
          </Menu.Item>
        }
-       <Menu.Menu position='right'>
-         <Menu.Item>
-            <SortList type={type}/>
-         </Menu.Item>
-        </Menu.Menu>
+       {type !== 'search' &&
+         <Menu.Menu position='right'>
+           <Menu.Item>
+              <SortList type={type}/>
+           </Menu.Item>
+          </Menu.Menu>
+        }
     </Menu>
   )
 }

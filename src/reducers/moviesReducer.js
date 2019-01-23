@@ -1,6 +1,7 @@
 export default function moviesReducer(state = {
   sort_by: '',
   sort_title: 'Most Popular',
+  query: '',
   current_page: '',
   total_results: '',
   total_pages: '',
@@ -10,6 +11,7 @@ export default function moviesReducer(state = {
   }
 }, action) {
   switch (action.type) {
+
     case 'FETCH_MOVIES':
       const edited = []
       action.payload.results.map(movie => {
@@ -26,6 +28,7 @@ export default function moviesReducer(state = {
         total_pages: action.payload.total_pages,
         movies: edited
       }
+
     case 'FETCH_CREDITS':
       return {
         ...state,
@@ -33,6 +36,7 @@ export default function moviesReducer(state = {
           credits: action.payload
         }
       }
+
     case 'SET_SORT_METHOD':
       let sort_title = ''
       const sort_by = action.payload
@@ -50,6 +54,13 @@ export default function moviesReducer(state = {
         sort_by: sort_by,
         sort_title: sort_title
       }
+
+    case 'SET_QUERY':
+      return {
+        ...state,
+        query: action.payload
+      }
+
     // case 'FETCH_NOW_PLAYING_DATES':
     //   return {
     //     ...state,

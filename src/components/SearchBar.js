@@ -21,12 +21,12 @@ class SearchBar extends Component {
 
   handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      this.props.actions.fetchSearchResults(this.state.text)
+      this.props.actions.fetchSearchResults(1, this.state.text)
     }
   }
 
   handleClick = () => {
-    this.props.actions.fetchSearchResults(this.state.text)
+    this.props.actions.fetchSearchResults(1, this.state.text)
   }
 
   render() {
@@ -35,6 +35,7 @@ class SearchBar extends Component {
         name='text'
         type='text'
         placeholder='Search for a movie'
+        size='large'
         icon={<Icon name='search' link onClick={this.handleClick}/>}
         value={this.state.text}
         onChange={this.handleChange}
