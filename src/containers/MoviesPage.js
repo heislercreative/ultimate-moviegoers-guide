@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import SearchBar from '../components/SearchBar'
 import NowPlaying from './NowPlaying'
+import Upcoming from './Upcoming'
 import SearchResults from './SearchResults'
 
 class MoviesPage extends Component {
@@ -9,7 +10,7 @@ class MoviesPage extends Component {
     return (
       <div>
         <SearchBar />
-        <SearchResults />
+        <Upcoming />
       </div>
     )
   }

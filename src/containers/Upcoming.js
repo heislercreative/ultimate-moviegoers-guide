@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import MoviesList from './MoviesList'
 
 
-class NowPlaying extends Component {
+class Upcoming extends Component {
   render() {
     return (
-      <MoviesList type={'now_playing'} />
+      <MoviesList type={'upcoming'} />
     )
   }
 }
 
-export default NowPlaying
+export default Upcoming

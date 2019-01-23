@@ -7,15 +7,15 @@ import * as actions from '../actions/movieActions'
 class SortList extends Component {
 
   reFetch = (sort_by) => {
-    if (this.props.type === 'now_playing') {
-      this.props.actions.fetchNowPlaying(1, sort_by)
-    }
+    this.props.actions.fetchMovies(this.props.type, 1, sort_by)
   }
 
   SortAndRefetch = (sort_by) => {
     this.props.actions.setSortMethod(sort_by)
     if (this.props.sort_by !== sort_by) {
       this.reFetch(sort_by)
+    } else if (this.props.type === 'upcoming') {
+      this.props.actions.fetchMovies(this.props.type, 1, sort_by)
     }
   }
 
@@ -31,10 +31,10 @@ class SortList extends Component {
               Top Rated
             </Dropdown.Item>
             <Dropdown.Item onClick={() => this.SortAndRefetch('release_date.desc')}>
-              Release Date (Most Recent)
+              Release Date (Descending)
             </Dropdown.Item>
             <Dropdown.Item onClick={() => this.SortAndRefetch('release_date.asc')}>
-              Release Date (Least Recent)
+              Release Date (Ascending)
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

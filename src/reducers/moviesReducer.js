@@ -45,9 +45,9 @@ export default function moviesReducer(state = {
       } else if (sort_by === 'vote_average.desc') {
         sort_title = 'Top Rated'
       } else if (sort_by === 'release_date.desc') {
-        sort_title = 'Release Date (Most Recent)'
+        sort_title = 'Release Date (Desc)'
       } else if (sort_by === 'release_date.asc') {
-        sort_title = 'Release Date (Least Recent)'
+        sort_title = 'Release Date (Ascending)'
       }
       return {
         ...state,

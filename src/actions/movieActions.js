@@ -2,8 +2,10 @@ const api_key = process.env.REACT_APP_API_KEY
 const proxyURL = 'https://cors-anywhere.herokuapp.com/' //Due to fetch CORS error, could be avoided if requested server-side
 
 // Fetching Actions
-export function fetchNowPlaying(page, sort_by) {
-  let targetURL = `https://api.themoviedb.org/3/movie/now_playing/?api_key=${api_key}&region=US&language=en-US`
+export function fetchMovies(type, page, sort_by) {
+  let targetURL = `https://api.themoviedb.org/3/movie/${type}/?api_key=${api_key}&region=US&language=en-US`
+
+  console.log(targetURL)
 
   return (dispatch) => {
     dispatch({ type: 'LOADING_MOVIES' })
