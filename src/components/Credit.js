@@ -1,10 +1,16 @@
 import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
 
+import placeholder from '../images/placeholder.jpg'
+
 const Credit = ({ name, character, profile_path, job }) => {
   return(
     <Card>
-      <Image src={profile_path} />
+      {profile_path ?
+        <Image src={profile_path} /> :
+        <Image src={placeholder} />
+      }
+
       <Card.Content>
         <Card.Header>{name}</Card.Header>
         <Card.Meta>{character}</Card.Meta>

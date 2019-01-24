@@ -38,8 +38,8 @@ class MovieFull extends Component {
             <p>{overview}</p>
             {this.state.loaded ?
               <div>
-                <CreditsList credits={cast} />
-                <CreditsList credits={crew} />
+                <CreditsList credits={cast} title={'Cast'}/>
+                <CreditsList credits={crew} title={'Crew'}/>
               </div>
               : null
             }

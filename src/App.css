@@ -63,3 +63,7 @@
   height: 60px;
   overflow-y: auto;
 }
+
+.credits-list {
+  margin-bottom: 40px;
+}
