@@ -4,31 +4,46 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../actions/movieActions'
 import { Modal, Button, Image } from 'semantic-ui-react'
 
-import Credits from './Credits'
+import CreditsList from './CreditsList'
 
 class MovieFull extends Component {
 
-  componentDidMount() {
-    this.props.actions.fetchMovie(this.props.id)
+  constructor() {
+    super()
+    this.state = {
+      loaded: false
+    }
+  }
+
+  async componentDidMount() {
+    await this.props.actions.fetchMovieWithCredits(this.props.id)
+    this.setState({ loaded: true })
+    // this.props.actions.fetchMovie(this.props.id)
+    // this.props.actions.fetchCredits(this.props.id)
   }
 
   render() {
-    const { title, release_date, poster, rating, overview } = this.props.movie.details
-  
-    // const cast = this.props.movie.credits.cast
-    // const crew = this.props.movie.credits.crew
+    const { title, release_date, poster_path, rating, overview } = this.props.movie.details
+    const { id, cast, crew } = this.props.movie.credits
 
     return (
       <Modal defaultOpen={true}>
         <Modal.Content image>
-          <Image wrapped size='huge' src={poster} />
+          <Image wrapped size='huge' src={poster_path} />
           <Modal.Description>
             <h1>{title}</h1>
             {rating > 0 && <h3>Rating: {rating}%</h3>}
             {rating === 0 && <h3>Not Rated</h3>}
             <h4>{release_date}</h4>
             <p>{overview}</p>
-            {/*<Credits cast={cast} crew={crew}/>*/}
+            {this.state.loaded ?
+              <div>
+                <CreditsList credits={cast} />
+                <CreditsList credits={crew} />
+              </div>
+              : null
+            }
+
           </Modal.Description>
         </Modal.Content>
       </Modal>

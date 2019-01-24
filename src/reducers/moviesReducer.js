@@ -14,36 +14,72 @@ export default function moviesReducer(state = {
   switch (action.type) {
 
     case 'FETCH_MOVIES':
-      const edited = []
+      let movies = []
       action.payload.results.map(movie => {
-        let m = {...movie, poster_path: `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`}
-        if (m.poster_path.includes('null')) {
-          m = {...movie, poster_path: null}
+        if (movie.poster_path) {
+          movie.poster_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
         }
-        edited.push(m)
       })
       return {
         ...state,
         current_page: action.payload.page,
         total_results: action.payload.total_results,
         total_pages: action.payload.total_pages,
-        movies: edited
+        movies: action.payload.results
       }
 
-    case 'FETCH_MOVIE':
+    // case 'FETCH_MOVIE':
+    //   const movie = action.payload
+    //   movie.poster_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
+    //   return {
+    //     ...state,
+    //     selected_movie: {
+    //       ...state.selected_movie,
+    //       details: movie
+    //     }
+    //   }
+
+    case 'FETCH_MOVIE_WITH_CREDITS':
+      const movie = action.payload[0]
+      const credits = action.payload[1]
+
+      movie.poster_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
+
+      credits.cast.map(cast => {
+        if (cast.profile_path) {
+          cast.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${cast.profile_path}`
+        }
+      })
+      credits.crew.map(crew => {
+        if (crew.profile_path) {
+          crew.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${crew.profile_path}`
+        }
+      })
+
       return {
         ...state,
         selected_movie: {
-          ...state,
-          details: action.payload
+          details: movie,
+          credits: credits
         }
       }
 
+
     case 'FETCH_CREDITS':
+      action.payload.cast.map(cast => {
+        if (cast.profile_path) {
+          cast.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${cast.profile_path}`
+        }
+      })
+      action.payload.crew.map(crew => {
+        if (crew.profile_path) {
+          crew.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${crew.profile_path}`
+        }
+      })
       return {
         ...state,
         selected_movie: {
-          ...state,
+          ...state.selected_movie,
           credits: action.payload
         }
       }

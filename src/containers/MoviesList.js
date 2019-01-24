@@ -50,7 +50,7 @@ class MoviesList extends Component {
             id={movie.id}
             title={movie.title}
             release_date={movie.release_date}
-            poster={movie.poster_path}
+            poster_path={movie.poster_path}
             rating={movie.vote_average * 10}
             overview={movie.overview}
           />

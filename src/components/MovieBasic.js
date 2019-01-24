@@ -7,14 +7,14 @@ class MovieBasic extends Component {
 
 // Change to const format?
   render() {
-    const { id, title, release_date, poster, rating, overview } = this.props
+    const { id, title, release_date, poster_path, rating, overview } = this.props
 
     return (
       <div className='movie-div'>
         <a href={`/movies/${id}`}>
           <Segment floated='left' className='movie-card'>
-            {poster ?
-              <Image src={poster} size='small' floated='left' className='poster-thumb'/> :
+            {poster_path ?
+              <Image src={poster_path} size='small' floated='left' className='poster-thumb'/> :
               <Image src={blank_poster} size='small' floated='left' className='poster-thumb'/>
             }
             <div className='movie-basic-details'>

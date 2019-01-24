@@ -58,6 +58,23 @@ export function fetchMovie(id) {
   }
 }
 
+export function fetchMovieWithCredits(id) {
+  const movie = fetch(proxyURL + `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`)
+    .then(resp => resp.json())
+
+  const credits = fetch(proxyURL + `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`)
+    .then(resp => resp.json())
+
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_MOVIE_WITH_CREDITS'})
+    return Promise.all([ movie, credits ])
+      .then(values => dispatch({
+        type: 'FETCH_MOVIE_WITH_CREDITS',
+        payload: values
+      }))
+  }
+}
+
 export function fetchCredits(id) {
   let targetURL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`
 
