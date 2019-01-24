@@ -7,12 +7,7 @@ class MovieBasic extends Component {
 
 // Change to const format?
   render() {
-    const id = this.props.id
-    const title = this.props.title
-    const release_date = this.props.release_date
-    const poster = this.props.poster
-    const rating = this.props.rating
-    const overview = this.props.overview
+    const { id, title, release_date, poster, rating, overview } = this.props
 
     return (
       <div className='movie-div'>

@@ -19,13 +19,8 @@ class MovieBasic extends Component {
   }
 
   render() {
-    const id = this.props.id
-    const title = this.props.title
-    const release_date = this.props.release_date
-    const poster = this.props.poster
-    const rating = this.props.rating
-    const overview = this.props.overview
-
+    const { id, title, release_date, poster, rating, overview } = this.props
+    
     return (
       <div>
         <Segment floated='left' className='movie-card'>

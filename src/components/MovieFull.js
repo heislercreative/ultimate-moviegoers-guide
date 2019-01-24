@@ -13,11 +13,8 @@ class MovieFull extends Component {
   }
 
   render() {
-    const title = this.props.movie.details.title
-    const release_date = this.props.movie.details.release_date
-    const poster = this.props.movie.details.poster
-    const rating = this.props.movie.details.rating
-    const overview = this.props.movie.details.overview
+    const { title, release_date, poster, rating, overview } = this.props.movie.details
+  
     // const cast = this.props.movie.credits.cast
     // const crew = this.props.movie.credits.crew
 

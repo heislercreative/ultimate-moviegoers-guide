@@ -31,12 +31,7 @@ class MoviesList extends Component {
   }
 
   render() {
-    const type = this.props.type
-    const movies = this.props.movies
-    const current_page = this.props.current_page
-    const total_pages = this.props.total_pages
-    const total_results = this.props.total_results
-    const sort_title = this.props.sort_title
+    const { type, movies, current_page, total_pages, total_results, sort_title } = this.props
 
     return (
       <div className='list-container'>

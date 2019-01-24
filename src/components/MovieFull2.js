@@ -13,14 +13,10 @@ class MovieFull extends Component {
   }
 
   render() {
-    const id = this.props.id
-    const title = this.props.title
-    const release_date = this.props.release_date
-    const poster = this.props.poster
-    const rating = this.props.rating
-    const overview = this.props.overview
-    const cast = this.props.cast
-    const crew = this.props.crew
+    const { title, release_date, poster, rating, overview } = this.props.movie.details
+
+    // const cast = this.props.cast
+    // const crew = this.props.crew
 
     return (
       <Modal defaultOpen={true}>
