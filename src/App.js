@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css'
 
 import MainMenu from './components/MainMenu'
-import SearchBar from './components/SearchBar'
 import MovieFull from './components/MovieFull'
 import NowPlaying from './containers/NowPlaying'
 import Upcoming from './containers/Upcoming'
 import SearchResults from './containers/SearchResults'
+import Header from './components/Header'
 
 class App extends Component {
   render() {
@@ -15,6 +15,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <MainMenu />
+          <Header />
           <Route exact path='/' component={NowPlaying} />
           <Route exact path='/now-playing' component={NowPlaying} />
           <Route path='/upcoming' component={Upcoming} />

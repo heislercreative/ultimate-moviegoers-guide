@@ -7,15 +7,15 @@ import * as actions from '../actions/movieActions'
 class SortList extends Component {
 
   reFetch = (sort_by) => {
-    this.props.actions.fetchMovies(this.props.type, 1, sort_by)
+    this.props.actions.fetchMovies(this.props.type, 1, this.props.min, this.props.max, sort_by)
   }
 
-  SortAndRefetch = (sort_by) => {
+  sortAndRefetch = (sort_by) => {
     this.props.actions.setSortMethod(sort_by)
     if (this.props.sort_by !== sort_by) {
       this.reFetch(sort_by)
     } else if (this.props.type === 'upcoming') {
-      this.props.actions.fetchMovies(this.props.type, 1, sort_by)
+      this.props.actions.fetchMovies(this.props.type, 1, this.props.min, this.props.max, sort_by)
     }
   }
 
@@ -24,16 +24,16 @@ class SortList extends Component {
       <div>
         <Dropdown text='Sort By'>
           <Dropdown.Menu>
-            <Dropdown.Item onClick={() => this.SortAndRefetch('popularity.desc')}>
+            <Dropdown.Item onClick={() => this.sortAndRefetch('popularity.desc')}>
               Most Popular
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => this.SortAndRefetch('vote_average.desc')}>
+            <Dropdown.Item onClick={() => this.sortAndRefetch('vote_average.desc')}>
               Top Rated
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => this.SortAndRefetch('release_date.desc')}>
+            <Dropdown.Item onClick={() => this.sortAndRefetch('release_date.desc')}>
               Release Date (Descending)
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => this.SortAndRefetch('release_date.asc')}>
+            <Dropdown.Item onClick={() => this.sortAndRefetch('release_date.asc')}>
               Release Date (Ascending)
             </Dropdown.Item>
           </Dropdown.Menu>
@@ -44,7 +44,9 @@ class SortList extends Component {
 }
 function mapStateToProps(state) {
   return {
-    sort_by: state.sort_by
+    sort_by: state.sort_by,
+    min: state.min,
+    max: state.max
   }
 }
 

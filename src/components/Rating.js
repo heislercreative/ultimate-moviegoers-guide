@@ -1,14 +1,35 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Segment } from 'semantic-ui-react'
 
-const shape = { width: 95, height: 95 }
+class Rating extends Component {
 
-const Rating = ({ rating }) => {
-  return(
-    <Segment className='rating-badge' circular style={shape}>
-      <h3>{rating}%</h3>
-    </Segment>
-  )
+  constructor() {
+    super()
+    this.state = {
+      color: ''
+    }
+  }
+
+  componentDidMount() {
+    const r = this.props.rating
+    if (r >= 70) {
+      this.setState({ color: 'green' })
+    } else if (r >= 50) {
+      this.setState({ color: 'yellow' })
+    } else {
+      this.setState({ color: 'red' })
+    }
+  }
+
+  render() {
+    const rating = this.props.rating
+
+    return(
+      <Segment className={'rating-badge'} circular  color={this.state.color} >
+        <h3>{rating}%</h3>
+      </Segment>
+    )
+  }
 }
 
 export default Rating

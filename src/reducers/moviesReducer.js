@@ -1,10 +1,11 @@
 export default function moviesReducer(state = {
   sort_by: '',
   sort_title: 'Most Popular',
-  query: '',
   current_page: '',
   total_results: '',
   total_pages: '',
+  min: '',
+  max: '',
   movies: [],
   selected_movie: {
     details: {},
@@ -14,7 +15,6 @@ export default function moviesReducer(state = {
   switch (action.type) {
 
     case 'FETCH_MOVIES':
-      let movies = []
       action.payload.results.map(movie => {
         if (movie.poster_path) {
           movie.poster_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
@@ -101,12 +101,12 @@ export default function moviesReducer(state = {
         sort_title: sort_title
       }
 
-    // case 'FETCH_NOW_PLAYING_DATES':
-    //   return {
-    //     ...state,
-    //     now_playing_max: action.payload.maximum,
-    //     now_playing_min: action.payload.minimum
-    //   }
+    case 'FETCH_DATES':
+      return {
+        ...state,
+        max: action.payload.maximum,
+        min: action.payload.minimum
+      }
 
     default:
       return state

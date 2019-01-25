@@ -20,7 +20,7 @@ class MoviesList extends Component {
     if (this.props.type === 'search') {
       await this.props.actions.fetchSearchResults(1, this.props.query)
     } else {
-      await this.props.actions.fetchMovies(this.props.type, 1, this.props.sort_by)
+      await this.props.actions.fetchMovies(this.props.type, 1, this.props.min, this.props.max, this.props.sort_by)
     }
     this.setState({ loaded: true })
   }
@@ -30,7 +30,7 @@ class MoviesList extends Component {
     if (this.props.type === 'search') {
       await this.props.actions.fetchSearchResults(this.props.current_page - 1, this.props.query)
     } else {
-      await this.props.actions.fetchMovies(this.props.type, this.props.current_page - 1, this.props.sort_by)
+      await this.props.actions.fetchMovies(this.props.type, this.props.current_page - 1, this.props.min, this.props.max, this.props.sort_by)
     }
     this.setState({ loaded: true })
   }
@@ -40,7 +40,7 @@ class MoviesList extends Component {
     if (this.props.type === 'search') {
       await this.props.actions.fetchSearchResults(this.props.current_page + 1, this.props.query)
     } else {
-      await this.props.actions.fetchMovies(this.props.type, this.props.current_page + 1, this.props.sort_by)
+      await this.props.actions.fetchMovies(this.props.type, this.props.current_page + 1, this.props.min, this.props.max, this.props.sort_by)
     }
     this.setState({ loaded: true })
   }
@@ -59,7 +59,6 @@ class MoviesList extends Component {
             total_results={total_results}
             previousPage={this.previousPage}
             nextPage={this.nextPage}
-            type={type}
           />
           {movies.map(movie =>
             <MovieBasic
@@ -100,6 +99,8 @@ function mapStateToProps(state, ownProps) {
     current_page: state.current_page,
     total_results: state.total_results,
     total_pages: state.total_pages,
+    min: state.min,
+    max: state.max,
     movies: state.movies
   }
 }

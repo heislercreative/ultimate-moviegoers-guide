@@ -3,14 +3,17 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 20vh;
+  margin-top: -15px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  background-color: #bbb;
+  min-height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #081c24;
 }
 
 .App-link {
@@ -21,7 +24,6 @@
   width: 90%;
   max-width: 1050px;
   margin: 40px auto !important;
-  overflow-x: auto;
 }
 
 .list-container {
@@ -71,8 +73,31 @@
   overflow-y: auto;
 }
 
+.movie-details {
+  float: left;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.poster-full {
+  max-width: 100%;
+  height: auto;
+  float: left;
+  margin-top: 20px;
+}
+
+.overview {
+  float: left;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 .rating-badge {
+  height: 100px;
+  width: 100px;
   border-width: 3px !important;
+  color: #777;
 }
 
 .credits-container {
@@ -102,4 +127,57 @@
 
 .credit-card-meta {
   font-size: 12px !important;
+}
+
+.logo {
+  width: 130px;
+  margin-bottom: 30px;
+}
+
+
+@media screen and (min-width: 550px) {
+  .poster-full {
+    width: 40%;
+  }
+  .movie-details {
+    width: 60%;
+    padding-top: 40px;
+    padding-left: 20px;
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .poster-full {
+    width: 35%;
+  }
+  .movie-details {
+    width: 65%;
+    padding-left: 30px;
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .movie-details {
+    padding-top: 0px;
+  }
+  .overview {
+    width: 65%;
+    padding-left: 30px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .poster-full {
+    width: 30%;
+  }
+  .movie-details {
+    width: 70%;
+    padding-left: 40px;
+  }
+  .overview {
+    width: 70%;
+    padding-left: 40px;
+  }
 }
