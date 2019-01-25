@@ -1,6 +1,6 @@
 # Ultimate Moviegoers Guide
 
-Movie listings React app with sorting, filters, and search features. Powered by [The Movie Database APIs](https://developers.themoviedb.org/3/getting-started/introduction).
+Movie listings React app with sorting, filters, and search features. Powered by [The Movie DB APIs](https://developers.themoviedb.org/3/getting-started/introduction).
 
 ## Installation & Usage
 
