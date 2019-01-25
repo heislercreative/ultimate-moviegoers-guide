@@ -2,69 +2,90 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/movieActions'
+import { Dimmer, Loader } from 'semantic-ui-react'
 
 import MovieBasic from '../components/MovieBasic'
 import ListNavigation from '../components/ListNavigation'
 
 class MoviesList extends Component {
 
-  componentDidMount() {
-    if (this.props.type === 'search') {
-      this.props.actions.fetchSearchResults(1, this.props.query)
-    } else {
-      this.props.actions.fetchMovies(this.props.type, 1, this.props.sort_by)
+  constructor() {
+    super()
+    this.state = {
+      loaded: false
     }
   }
 
-  previousPage = (e) => {
+  async componentDidMount() {
     if (this.props.type === 'search') {
-      this.props.actions.fetchSearchResults(this.props.current_page - 1, this.props.query)
+      await this.props.actions.fetchSearchResults(1, this.props.query)
     } else {
-      this.props.actions.fetchMovies(this.props.type, this.props.current_page - 1, this.props.sort_by)
+      await this.props.actions.fetchMovies(this.props.type, 1, this.props.sort_by)
     }
+    this.setState({ loaded: true })
   }
 
-  nextPage = (e) => {
+  previousPage = async (e) => {
+    this.setState({ loaded: false })
     if (this.props.type === 'search') {
-      this.props.actions.fetchSearchResults(this.props.current_page + 1, this.props.query)
+      await this.props.actions.fetchSearchResults(this.props.current_page - 1, this.props.query)
     } else {
-      this.props.actions.fetchMovies(this.props.type, this.props.current_page + 1, this.props.sort_by)
+      await this.props.actions.fetchMovies(this.props.type, this.props.current_page - 1, this.props.sort_by)
     }
+    this.setState({ loaded: true })
+  }
+
+  nextPage = async (e) => {
+    this.setState({ loaded: false })
+    if (this.props.type === 'search') {
+      await this.props.actions.fetchSearchResults(this.props.current_page + 1, this.props.query)
+    } else {
+      await this.props.actions.fetchMovies(this.props.type, this.props.current_page + 1, this.props.sort_by)
+    }
+    this.setState({ loaded: true })
   }
 
   render() {
-    const { type, movies, current_page, total_pages, total_results, sort_title, query } = this.props
+    const { type, movies, current_page, total_pages, total_results, sort_title } = this.props
 
     return (
-      <div className='list-container'>
-        {type !== 'search' && <h3>{sort_title}</h3>}
-        <ListNavigation
-          current_page={current_page}
-          total_pages={total_pages}
-          total_results={total_results}
-          previousPage={this.previousPage}
-          nextPage={this.nextPage}
-          type={type}
-        />
-        {movies.map(movie =>
-          <MovieBasic
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            release_date={movie.release_date}
-            poster_path={movie.poster_path}
-            rating={movie.vote_average * 10}
-            overview={movie.overview}
+      <div>
+      {this.state.loaded ?
+        <div className='list-container'>
+          {type !== 'search' && <h3>{sort_title}</h3>}
+          <ListNavigation
+            current_page={current_page}
+            total_pages={total_pages}
+            total_results={total_results}
+            previousPage={this.previousPage}
+            nextPage={this.nextPage}
+            type={type}
           />
-        )}
-        <ListNavigation
-          current_page={current_page}
-          total_pages={total_pages}
-          total_results={total_results}
-          previousPage={this.previousPage}
-          nextPage={this.nextPage}
-          type={type}
-        />
+          {movies.map(movie =>
+            <MovieBasic
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              release_date={movie.release_date}
+              poster_path={movie.poster_path}
+              rating={movie.vote_average * 10}
+              overview={movie.overview}
+            />
+          )}
+          <ListNavigation
+            current_page={current_page}
+            total_pages={total_pages}
+            total_results={total_results}
+            previousPage={this.previousPage}
+            nextPage={this.nextPage}
+            type={type}
+          />
+        </div>
+        :
+        <Dimmer active inverted>
+          <Loader />
+        </Dimmer>
+      }
       </div>
     )
   }

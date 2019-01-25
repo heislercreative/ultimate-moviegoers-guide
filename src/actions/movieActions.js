@@ -1,5 +1,5 @@
 const api_key = process.env.REACT_APP_API_KEY
-const proxyURL = 'https://cors-anywhere.herokuapp.com/' //Due to fetch CORS error, could be avoided if requested server-side
+const proxyURL = 'https://cors-escape.herokuapp.com/' //Due to fetch CORS error, could be avoided if requested server-side
 
 // Fetching Actions
 export function fetchMovies(type, page, sort_by) {

@@ -17,10 +17,9 @@ class App extends Component {
           <MainMenu />
           <Route exact path='/' component={NowPlaying} />
           <Route exact path='/now-playing' component={NowPlaying} />
-          <Route exact path='/upcoming' component={Upcoming} />
+          <Route path='/upcoming' component={Upcoming} />
           <Route path={'/movies/:movieId'} component={MovieFull} />
-          {/* Possibly remove search component */}
-          <Route exact path='/search/:query' component={SearchResults} />
+          <Route path={'/search/:query'} component={SearchResults} />
         </div>
       </Router>
     );

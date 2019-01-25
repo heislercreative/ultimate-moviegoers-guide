@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Input, Form, Button, Icon } from 'semantic-ui-react'
+import { Input, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/movieActions'

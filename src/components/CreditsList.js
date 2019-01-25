@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import { Card } from 'semantic-ui-react'
+import React from 'react'
 
 import Credit from './Credit'
 
@@ -9,6 +8,7 @@ const CreditsList = ({ credits, title }) => {
       <h2>{title}</h2>
         {credits.map(credit =>
           <Credit
+            key={credit.credit_id}
             name={credit.name}
             character={credit.character}
             job={credit.job}

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/movieActions'
-import { Segment, Button, Image } from 'semantic-ui-react'
+import { Segment, Button, Image, Dimmer, Loader } from 'semantic-ui-react'
 
 import CreditsList from './CreditsList'
 
@@ -18,30 +18,35 @@ class MovieFull extends Component {
   async componentDidMount() {
     await this.props.actions.fetchMovieWithCredits(this.props.id)
     this.setState({ loaded: true })
-    // this.props.actions.fetchMovie(this.props.id)
-    // this.props.actions.fetchCredits(this.props.id)
   }
 
   render() {
     const { title, release_date, poster_path, rating, overview } = this.props.movie.details
-    const { id, cast, crew } = this.props.movie.credits
+    const { cast, crew } = this.props.movie.credits
 
     return (
-      <Segment className='page-container' padded='very'  textAlign='left'>
-        <Image wrapped size='huge' src={poster_path} />
+      <div>
+      {this.state.loaded ?
+        <Segment className='page-container' padded='very'  textAlign='left'>
+          <Image wrapped size='huge' src={poster_path} />
             <h1>{title}</h1>
             {rating > 0 && <h3>Rating: {rating}%</h3>}
             {rating === 0 && <h3>Not Rated</h3>}
             <h4>{release_date}</h4>
             <p>{overview}</p>
-            {this.state.loaded ?
-              <div>
-                <CreditsList credits={cast} title={'Cast'}/>
-                <CreditsList credits={crew} title={'Crew'}/>
-              </div>
-              : null
-            }
-      </Segment>
+            <div>
+              <CreditsList credits={cast} title={'Cast'}/>
+            </div>
+            <div>
+              <CreditsList credits={crew} title={'Crew'}/>
+            </div>
+        </Segment>
+        :
+        <Dimmer active inverted>
+          <Loader />
+        </Dimmer>
+      }
+      </div>
     )
   }
 }
