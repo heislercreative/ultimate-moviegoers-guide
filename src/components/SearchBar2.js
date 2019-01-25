@@ -19,18 +19,16 @@ class SearchBar extends Component {
     })
   }
 
-  querify = (query) => {
-    window.location.href = `/search/${query.replace(/ /g,'+')}`
-  }
-
   handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      this.querify(this.state.text)
+      this.props.actions.setQuery(this.state.text)
+      this.props.actions.fetchSearchResults(1, this.state.text)
     }
   }
 
   handleClick = () => {
-    this.querify(this.state.text)
+    this.props.actions.setQuery(this.state.text)
+    this.props.actions.fetchSearchResults(1, this.state.text)
   }
 
   render() {

@@ -1,16 +1,26 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
 import MoviesList from './MoviesList'
 
 
 class SearchResults extends Component {
   render() {
+    const query = this.props.query
+
     return (
       <div>
         <h2>Search Results</h2>
-        <MoviesList type={'search'} />
+        <MoviesList type={'search'} query={query}/>
       </div>
     )
   }
 }
 
-export default SearchResults
+function mapStateToProps(state, ownProps) {
+  return {
+    query: ownProps.match.params.query
+  }
+}
+export default connect(mapStateToProps, null)(SearchResults)

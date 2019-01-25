@@ -9,9 +9,7 @@ import ListNavigation from '../components/ListNavigation'
 class MoviesList extends Component {
 
   componentDidMount() {
-    if (this.props.type === 'search') {
-      this.props.actions.fetchSearchResults(1, this.props.query)
-    } else {
+    if (this.props.type !== 'search') {
       this.props.actions.fetchMovies(this.props.type, 1, this.props.sort_by)
     }
   }
@@ -33,7 +31,7 @@ class MoviesList extends Component {
   }
 
   render() {
-    const { type, movies, current_page, total_pages, total_results, sort_title, query } = this.props
+    const { type, movies, current_page, total_pages, total_results, sort_title } = this.props
 
     return (
       <div className='list-container'>
@@ -70,10 +68,11 @@ class MoviesList extends Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     sort_by: state.sort_by,
     sort_title: state.sort_title,
+    query: state.query,
     current_page: state.current_page,
     total_results: state.total_results,
     total_pages: state.total_pages,

@@ -42,21 +42,21 @@ export function fetchSearchResults(page, query) {
   }
 }
 
-export function fetchMovie(id) {
-  let targetURL = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`
-
-  console.log(targetURL)
-
-  return (dispatch) => {
-    dispatch({ type: 'LOADING_MOVIE' })
-    return fetch(proxyURL + targetURL)
-      .then(resp => resp.json())
-      .then(movie => dispatch({
-        type: 'FETCH_MOVIE',
-        payload: movie
-      }))
-  }
-}
+// export function fetchMovie(id) {
+//   let targetURL = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`
+//
+//   console.log(targetURL)
+//
+//   return (dispatch) => {
+//     dispatch({ type: 'LOADING_MOVIE' })
+//     return fetch(proxyURL + targetURL)
+//       .then(resp => resp.json())
+//       .then(movie => dispatch({
+//         type: 'FETCH_MOVIE',
+//         payload: movie
+//       }))
+//   }
+// }
 
 export function fetchMovieWithCredits(id) {
   const movie = fetch(proxyURL + `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`)
@@ -75,21 +75,21 @@ export function fetchMovieWithCredits(id) {
   }
 }
 
-export function fetchCredits(id) {
-  let targetURL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`
-
-  console.log(targetURL)
-
-  return (dispatch) => {
-    dispatch({ type: 'LOADING_CREDITS' })
-    return fetch(proxyURL + targetURL)
-      .then(resp => resp.json())
-      .then(credits => dispatch({
-        type: 'FETCH_CREDITS',
-        payload: credits
-      }))
-  }
-}
+// export function fetchCredits(id) {
+//   let targetURL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`
+//
+//   console.log(targetURL)
+//
+//   return (dispatch) => {
+//     dispatch({ type: 'LOADING_CREDITS' })
+//     return fetch(proxyURL + targetURL)
+//       .then(resp => resp.json())
+//       .then(credits => dispatch({
+//         type: 'FETCH_CREDITS',
+//         payload: credits
+//       }))
+//   }
+// }
 
 // Sort & Search Action(s)
 export function setSortMethod(sort_by) {
@@ -101,15 +101,6 @@ export function setSortMethod(sort_by) {
   }
 }
 
-export function setQuery(query) {
-  let q = query.replace(' ','+')
-  return (dispatch) => {
-    dispatch({
-      type: 'SET_QUERY',
-      payload: q
-    })
-  }
-}
 
 
 // export function fetchNowPlaying(min, max, page) {

@@ -20,7 +20,7 @@ class App extends Component {
           <Route exact path='/upcoming' component={Upcoming} />
           <Route path={'/movies/:movieId'} component={MovieFull} />
           {/* Possibly remove search component */}
-          <Route exact path='/search-results' component={SearchResults} />
+          <Route exact path='/search/:query' component={SearchResults} />
         </div>
       </Router>
     );

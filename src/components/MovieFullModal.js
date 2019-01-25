@@ -18,8 +18,6 @@ class MovieFull extends Component {
   async componentDidMount() {
     await this.props.actions.fetchMovieWithCredits(this.props.id)
     this.setState({ loaded: true })
-    // this.props.actions.fetchMovie(this.props.id)
-    // this.props.actions.fetchCredits(this.props.id)
   }
 
   render() {

@@ -64,7 +64,6 @@ export default function moviesReducer(state = {
         }
       }
 
-
     // case 'FETCH_CREDITS':
     //   action.payload.cast.map(cast => {
     //     if (cast.profile_path) {
@@ -100,12 +99,6 @@ export default function moviesReducer(state = {
         ...state,
         sort_by: sort_by,
         sort_title: sort_title
-      }
-
-    case 'SET_QUERY':
-      return {
-        ...state,
-        query: action.payload
       }
 
     // case 'FETCH_NOW_PLAYING_DATES':
