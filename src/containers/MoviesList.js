@@ -59,6 +59,7 @@ class MoviesList extends Component {
             total_results={total_results}
             previousPage={this.previousPage}
             nextPage={this.nextPage}
+            type={type}
           />
           {movies.map(movie =>
             <MovieBasic
