@@ -17,6 +17,13 @@
   color: #61dafb;
 }
 
+.page-container {
+  width: 90%;
+  max-width: 1050px;
+  margin: 40px auto !important;
+  overflow-x: auto;
+}
+
 .list-container {
   width: 90%;
   max-width: 950px;
@@ -65,5 +72,23 @@
 }
 
 .credits-list {
+  float: left;
   margin-bottom: 40px;
+  height: 400px;
+  width: 50000px;
+}
+
+.credit-card {
+  float: left;
+  margin-right: 10px !important;
+  height: 375px;
+  max-width: 150px !important;
+}
+
+.credit-card-header {
+  font-size: 14px !important;
+}
+
+.credit-card-meta {
+  font-size: 12px !important;
 }

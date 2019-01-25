@@ -65,24 +65,24 @@ export default function moviesReducer(state = {
       }
 
 
-    case 'FETCH_CREDITS':
-      action.payload.cast.map(cast => {
-        if (cast.profile_path) {
-          cast.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${cast.profile_path}`
-        }
-      })
-      action.payload.crew.map(crew => {
-        if (crew.profile_path) {
-          crew.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${crew.profile_path}`
-        }
-      })
-      return {
-        ...state,
-        selected_movie: {
-          ...state.selected_movie,
-          credits: action.payload
-        }
-      }
+    // case 'FETCH_CREDITS':
+    //   action.payload.cast.map(cast => {
+    //     if (cast.profile_path) {
+    //       cast.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${cast.profile_path}`
+    //     }
+    //   })
+    //   action.payload.crew.map(crew => {
+    //     if (crew.profile_path) {
+    //       crew.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${crew.profile_path}`
+    //     }
+    //   })
+    //   return {
+    //     ...state,
+    //     selected_movie: {
+    //       ...state.selected_movie,
+    //       credits: action.payload
+    //     }
+    //   }
 
     case 'SET_SORT_METHOD':
       let sort_title = ''

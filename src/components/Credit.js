@@ -5,16 +5,16 @@ import placeholder from '../images/placeholder.jpg'
 
 const Credit = ({ name, character, profile_path, job }) => {
   return(
-    <Card>
+    <Card className='credit-card'>
       {profile_path ?
         <Image src={profile_path} /> :
         <Image src={placeholder} />
       }
 
       <Card.Content>
-        <Card.Header>{name}</Card.Header>
-        <Card.Meta>{character}</Card.Meta>
-        <Card.Meta>{job}</Card.Meta>
+        <Card.Header className='credit-card-header'>{name}</Card.Header>
+        <Card.Meta className='credit-card-meta'>{character}</Card.Meta>
+        <Card.Meta className='credit-card-meta'>{job}</Card.Meta>
       </Card.Content>
     </Card>
   )

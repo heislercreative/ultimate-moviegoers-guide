@@ -7,7 +7,6 @@ const CreditsList = ({ credits, title }) => {
   return(
     <div className='credits-list'>
       <h2>{title}</h2>
-      <Card.Group itemsPerRow={5}>
         {credits.map(credit =>
           <Credit
             name={credit.name}
@@ -16,7 +15,6 @@ const CreditsList = ({ credits, title }) => {
             profile_path={credit.profile_path}
           />
         )}
-      </Card.Group>
     </div>
   )
 }

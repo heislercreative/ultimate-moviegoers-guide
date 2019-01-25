@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/movieActions'
-import { Segment, Button, Image } from 'semantic-ui-react'
+import { Modal, Button, Image } from 'semantic-ui-react'
 
 import CreditsList from './CreditsList'
 
@@ -27,8 +27,10 @@ class MovieFull extends Component {
     const { id, cast, crew } = this.props.movie.credits
 
     return (
-      <Segment className='page-container' padded='very'  textAlign='left'>
-        <Image wrapped size='huge' src={poster_path} />
+      <Modal defaultOpen={true}>
+        <Modal.Content image>
+          <Image wrapped size='huge' src={poster_path} />
+          <Modal.Description>
             <h1>{title}</h1>
             {rating > 0 && <h3>Rating: {rating}%</h3>}
             {rating === 0 && <h3>Not Rated</h3>}
@@ -41,7 +43,10 @@ class MovieFull extends Component {
               </div>
               : null
             }
-      </Segment>
+
+          </Modal.Description>
+        </Modal.Content>
+      </Modal>
     )
   }
 }
