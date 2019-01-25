@@ -70,6 +70,8 @@ class MoviesList extends Component {
               poster_path={movie.poster_path}
               rating={movie.vote_average * 10}
               overview={movie.overview}
+              type={type}
+              status={movie.status}
             />
           )}
           <ListNavigation

@@ -8,7 +8,7 @@ class MovieBasic extends Component {
 
 // Change to const format?
   render() {
-    const { id, title, release_date, poster_path, rating, overview } = this.props
+    const { id, title, release_date, poster_path, rating, overview, type } = this.props
 
     return (
       <div className='movie-div'>
@@ -22,7 +22,7 @@ class MovieBasic extends Component {
               <h3>{title}</h3>
               {rating > 0 && <h4>Rating: {rating}%</h4>}
               {rating === 0 && <h4>Not Rated</h4>}
-              <h4>{release_date}</h4>
+              <h4>Released: {release_date}</h4>
               <p>{overview}</p>
             </div>
           </Segment>

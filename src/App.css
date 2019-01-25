@@ -71,18 +71,29 @@
   overflow-y: auto;
 }
 
+.rating-badge {
+  border-width: 3px !important;
+}
+
+.credits-container {
+  width: 100%;
+  height: 405px;
+  overflow-x: auto;
+  padding-left: 2px;
+}
+
 .credits-list {
-  float: left;
-  margin-bottom: 40px;
-  height: 400px;
-  width: 50000px;
+  height: 375px;
+  display: inline-flex;
 }
 
 .credit-card {
   float: left;
+  margin-top: 2px !important;
   margin-right: 10px !important;
   height: 375px;
   max-width: 150px !important;
+  display: inline-table;
 }
 
 .credit-card-header {
