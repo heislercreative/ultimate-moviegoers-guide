@@ -38,11 +38,12 @@ class SearchBar extends Component {
       <Input
         name='text'
         type='text'
-        placeholder='Search for a movie'
+        placeholder='Search movies...'
         icon={<Icon name='search' link onClick={this.handleClick}/>}
         value={this.state.text}
         onChange={this.handleChange}
         onKeyPress={this.handleKeyPress}
+        className='search-bar'
       />
     )
   }

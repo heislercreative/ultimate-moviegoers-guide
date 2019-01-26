@@ -16,7 +16,7 @@ const MovieBasic = ({ id, title, release_date, poster_path, rating, overview }) 
             <h3>{title}</h3>
             {rating > 0 && <h4>Rating: {rating}%</h4>}
             {rating === 0 && <h4>Not Rated</h4>}
-            <h4>Release Date: {release_date}</h4>
+            <h4>{release_date}</h4>
             <p>{overview}</p>
           </div>
         </Segment>

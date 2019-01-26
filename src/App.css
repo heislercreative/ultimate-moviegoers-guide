@@ -20,6 +20,10 @@
   color: #61dafb;
 }
 
+.search-bar {
+  width: 140px !important;
+}
+
 .page-container {
   width: 90%;
   max-width: 1050px;
@@ -135,7 +139,11 @@
 }
 
 
+/* Media Queries */
 @media screen and (min-width: 550px) {
+  .search-bar {
+    width: auto !important;
+  }
   .poster-full {
     width: 40%;
   }
