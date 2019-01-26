@@ -39,7 +39,7 @@ class MovieFull extends Component {
             <br/>
             <strong>Genres &nbsp;|&nbsp;</strong>
             {genres.map(genre =>
-              <span> {genre.name} &nbsp;&nbsp;</span>
+              <span key={genre.id}> {genre.name} &nbsp;&nbsp;</span>
             )}
             <br/><br/>
             {runtime && <span><strong>Runtime &nbsp;|&nbsp;</strong> {runtime} minutes</span>}
