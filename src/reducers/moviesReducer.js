@@ -15,7 +15,7 @@ export default function moviesReducer(state = {
   switch (action.type) {
 
     case 'FETCH_MOVIES':
-      action.payload.results.map(movie => {
+      action.payload.results.forEach(movie => {
         if (movie.poster_path) {
           movie.poster_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
         }
@@ -45,12 +45,12 @@ export default function moviesReducer(state = {
 
       movie.poster_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
 
-      credits.cast.map(cast => {
+      credits.cast.forEach(cast => {
         if (cast.profile_path) {
           cast.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${cast.profile_path}`
         }
       })
-      credits.crew.map(crew => {
+      credits.crew.forEach(crew => {
         if (crew.profile_path) {
           crew.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${crew.profile_path}`
         }
