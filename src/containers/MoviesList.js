@@ -25,22 +25,12 @@ class MoviesList extends Component {
     this.setState({ loaded: true })
   }
 
-  previousPage = async (e) => {
+  navigate = async (direction) => {
     this.setState({ loaded: false })
     if (this.props.type === 'search') {
-      await this.props.actions.fetchSearchResults(this.props.current_page - 1, this.props.query)
+      await this.props.actions.fetchSearchResults(this.props.current_page + direction, this.props.query)
     } else {
-      await this.props.actions.fetchMovies(this.props.type, this.props.current_page - 1, this.props.min, this.props.max, this.props.sort_by)
-    }
-    this.setState({ loaded: true })
-  }
-
-  nextPage = async (e) => {
-    this.setState({ loaded: false })
-    if (this.props.type === 'search') {
-      await this.props.actions.fetchSearchResults(this.props.current_page + 1, this.props.query)
-    } else {
-      await this.props.actions.fetchMovies(this.props.type, this.props.current_page + 1, this.props.min, this.props.max, this.props.sort_by)
+      await this.props.actions.fetchMovies(this.props.type, this.props.current_page + direction, this.props.min, this.props.max, this.props.sort_by)
     }
     this.setState({ loaded: true })
   }
@@ -57,8 +47,8 @@ class MoviesList extends Component {
             current_page={current_page}
             total_pages={total_pages}
             total_results={total_results}
-            previousPage={this.previousPage}
-            nextPage={this.nextPage}
+            previousPage={() => this.navigate(-1)}
+            nextPage={() => this.navigate(1)}
             type={type}
           />
           {movies.map(movie =>
@@ -78,8 +68,8 @@ class MoviesList extends Component {
             current_page={current_page}
             total_pages={total_pages}
             total_results={total_results}
-            previousPage={this.previousPage}
-            nextPage={this.nextPage}
+            previousPage={() => this.navigate(-1)}
+            nextPage={() => this.navigate(1)}
             type={type}
           />
         </div>
