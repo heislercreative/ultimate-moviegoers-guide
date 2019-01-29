@@ -18,7 +18,7 @@ export function fetchDates(type) {
 
 
 export function fetchMovies(type, page, min, max, sort_by) {
-  let targetURL = `https://api.themoviedb.org/3/discover/movie/?api_key=${api_key}&region=US&language=en-US&with_release_type=2|3&primary_release_date.gte=${min}&primary_release_date.lte=${max}&page=${page}&sort_by=${sort_by}`
+  let targetURL = `https://api.themoviedb.org/3/discover/movie/?api_key=${api_key}&include_adult=false&region=US&language=en-US&with_release_type=2|3&primary_release_date.gte=${min}&primary_release_date.lte=${max}&page=${page}&sort_by=${sort_by}`
 
   return (dispatch) => {
     dispatch({ type: 'LOADING_MOVIES' })
