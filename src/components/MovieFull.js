@@ -6,6 +6,7 @@ import { Segment, Divider, Dimmer, Loader } from 'semantic-ui-react'
 
 import Rating from './Rating'
 import CreditsList from './CreditsList'
+import VideosList from './VideosList'
 
 class MovieFull extends Component {
 
@@ -17,13 +18,14 @@ class MovieFull extends Component {
   }
 
   async componentDidMount() {
-    await this.props.actions.fetchMovieWithCredits(this.props.id)
+    await this.props.actions.fetchMovie(this.props.id)
     this.setState({ loaded: true })
   }
 
   render() {
     const { title, poster_path, vote_average, release_date, status, genres, runtime, overview } = this.props.movie.details
     const { cast, crew } = this.props.movie.credits
+    const videos = this.props.movie.videos
 
     return (
       <div>
@@ -56,6 +58,10 @@ class MovieFull extends Component {
           }
           {crew.length > 0 &&
             <CreditsList credits={crew} title={'Crew'}/>
+          }
+          <Divider hidden clearing/>
+          {videos.length >0 &&
+            <VideosList videos={videos}/>
           }
         </Segment>
         :

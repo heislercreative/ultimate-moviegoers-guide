@@ -9,7 +9,8 @@ export default function moviesReducer(state = {
   movies: [],
   selected_movie: {
     details: {},
-    credits: {}
+    credits: {},
+    videos: {}
   }
 }, action) {
   switch (action.type) {
@@ -39,9 +40,10 @@ export default function moviesReducer(state = {
     //     }
     //   }
 
-    case 'FETCH_MOVIE_WITH_CREDITS':
+    case 'FETCH_MOVIE_WITH_CREDITS_AND_VIDEOS':
       const movie = action.payload[0]
       const credits = action.payload[1]
+      const videos = action.payload[2]
 
       movie.poster_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
 
@@ -56,11 +58,19 @@ export default function moviesReducer(state = {
         }
       })
 
+      videos.results.forEach(video => {
+        if (video.site === 'YouTube') {
+          video.embed_path = `https://youtube.com/embed/${video.key}`
+          video.link_path = `https://youtube.com/watch?v=${video.key}`
+        }
+      })
+
       return {
         ...state,
         selected_movie: {
           details: movie,
-          credits: credits
+          credits: credits,
+          videos: videos.results
         }
       }
 
