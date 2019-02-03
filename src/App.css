@@ -134,6 +134,28 @@
   font-size: 12px !important;
 }
 
+.video-card {
+  float: left;
+  width: 267px;
+  height: 220px;
+  padding-left: 0 !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  margin-left: 2px !important;
+}
+
+.video-title {
+  padding: 2px 8px;
+}
+
+.video-title a {
+  color: #444;
+}
+
+.video-title a:hover {
+  color: #777;
+}
+
 .logo {
   width: 130px;
   margin-bottom: 30px;
