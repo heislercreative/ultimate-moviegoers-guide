@@ -58,6 +58,13 @@ export default function moviesReducer(state = {
         }
       })
 
+      videos.results.forEach(video => {
+        if (video.site === 'YouTube') {
+          video.embed_path = `https://youtube.com/embed/${video.key}`
+          video.link_path = `https://youtube.com/watch?v=${video.key}`
+        }
+      })
+
       return {
         ...state,
         selected_movie: {

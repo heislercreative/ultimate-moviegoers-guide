@@ -1,15 +1,18 @@
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Segment, Image } from 'semantic-ui-react'
 
 import placeholder from '../images/placeholder.jpg'
 
-const Video = ({ name, key, site }) => {
+const Video = ({ name, key, site, embed_path, link_path }) => {
   return(
-    <Card className='credit-card'>
-      <Card.Content>
-        <Card.Header className='credit-card-header'>{name}</Card.Header>
-      </Card.Content>
-    </Card>
+    <Segment floated='left' className='movie-card'>
+      <iframe width="267" height="150" src={embed_path} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+      <div className='movie-basic-details'>
+        <a href={link_path}>
+          <strong>{name}</strong>
+        </a>
+      </div>
+    </Segment>
   )
 }
 

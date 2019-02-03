@@ -28,6 +28,7 @@
   width: 90%;
   max-width: 1050px;
   margin: 40px auto !important;
+  display: inline-block;
 }
 
 .list-container {
