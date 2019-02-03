@@ -60,7 +60,9 @@ class MovieFull extends Component {
             <CreditsList credits={crew} title={'Crew'}/>
           }
           <Divider hidden clearing/>
-          <VideosList videos={videos}/>
+          {videos.length >0 &&
+            <VideosList videos={videos}/>
+          }
         </Segment>
         :
         <Dimmer active inverted>
