@@ -63,7 +63,7 @@ export default function moviesReducer(state = {
         selected_movie: {
           details: movie,
           credits: credits,
-          videos: videos
+          videos: videos.results
         }
       }
 
