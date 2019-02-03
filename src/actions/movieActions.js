@@ -63,18 +63,21 @@ export function fetchSearchResults(page, query) {
 //   }
 // }
 
-export function fetchMovieWithCredits(id) {
+export function fetchMovie(id) {
   const movie = fetch(proxyURL + `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`)
     .then(resp => resp.json())
 
   const credits = fetch(proxyURL + `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`)
     .then(resp => resp.json())
 
+  const videos = fetch(proxyURL + `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}`)
+    .then(resp => resp.json())
+
   return (dispatch) => {
-    dispatch({ type: 'LOADING_MOVIE_WITH_CREDITS'})
-    return Promise.all([ movie, credits ])
+    dispatch({ type: 'LOADING_MOVIE_WITH_CREDITS_AND_VIDEOS'})
+    return Promise.all([ movie, credits, videos ])
       .then(values => dispatch({
-        type: 'FETCH_MOVIE_WITH_CREDITS',
+        type: 'FETCH_MOVIE_WITH_CREDITS_AND_VIDEOS',
         payload: values
       }))
   }
