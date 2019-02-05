@@ -11,7 +11,6 @@ const VideosList = ({ videos }) => {
           <Video
             name={video.name}
             key={video.key}
-            site={video.site}
             embed_path={video.embed_path}
             link_path={video.link_path}
           />
