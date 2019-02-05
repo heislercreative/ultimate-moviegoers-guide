@@ -1,13 +1,13 @@
+const base_url = 'https://api.themoviedb.org/3'
 const api_key = process.env.REACT_APP_API_KEY
-const proxyURL = 'https://cors-anywhere.herokuapp.com/' //Due to fetch CORS error, could be avoided if requested server-side
 
 // Fetching Actions
 export function fetchDates(type) {
-  let targetURL = `https://api.themoviedb.org/3/movie/${type}/?api_key=${api_key}&region=US&language=en-US`
+  let targetURL = `${base_url}/movie/${type}?api_key=${api_key}&region=US&language=en-US`
 
   return (dispatch) => {
     dispatch({ type: 'LOADING_MOVIES' })
-    return fetch(proxyURL + targetURL)
+    return fetch(targetURL)
       .then(resp => resp.json())
       .then(hash => dispatch({
         type: 'FETCH_DATES',
@@ -18,11 +18,11 @@ export function fetchDates(type) {
 
 
 export function fetchMovies(type, page, min, max, sort_by) {
-  let targetURL = `https://api.themoviedb.org/3/discover/movie/?api_key=${api_key}&include_adult=false&region=US&language=en-US&with_release_type=2|3&primary_release_date.gte=${min}&primary_release_date.lte=${max}&page=${page}&sort_by=${sort_by}`
+  let targetURL = `${base_url}/discover/movie?api_key=${api_key}&include_adult=false&region=US&language=en-US&with_release_type=2|3&primary_release_date.gte=${min}&primary_release_date.lte=${max}&page=${page}&sort_by=${sort_by}`
 
   return (dispatch) => {
     dispatch({ type: 'LOADING_MOVIES' })
-    return fetch(proxyURL + targetURL)
+    return fetch(targetURL)
       .then(resp => resp.json())
       .then(movies => dispatch({
         type: 'FETCH_MOVIES',
@@ -32,7 +32,7 @@ export function fetchMovies(type, page, min, max, sort_by) {
 }
 
 export function fetchSearchResults(page, query) {
-  let targetURL = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&include_adult=false&page=${page}&query=${query}`
+  let targetURL = `${base_url}/search/movie?api_key=${api_key}&include_adult=false&page=${page}&query=${query}`
 
   console.log(targetURL)
 
@@ -48,7 +48,7 @@ export function fetchSearchResults(page, query) {
 }
 
 // export function fetchMovie(id) {
-//   let targetURL = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`
+//   let targetURL = `${base_url}/movie/${id}?api_key=${api_key}`
 //
 //   console.log(targetURL)
 //
@@ -64,13 +64,13 @@ export function fetchSearchResults(page, query) {
 // }
 
 export function fetchMovie(id) {
-  const movie = fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`)
+  const movie = fetch(`${base_url}/movie/${id}?api_key=${api_key}`)
     .then(resp => resp.json())
 
-  const credits = fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`)
+  const credits = fetch(`${base_url}/movie/${id}/credits?api_key=${api_key}`)
     .then(resp => resp.json())
 
-  const videos = fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}`)
+  const videos = fetch(`${base_url}/movie/${id}/videos?api_key=${api_key}`)
     .then(resp => resp.json())
 
   return (dispatch) => {
@@ -84,7 +84,7 @@ export function fetchMovie(id) {
 }
 
 // export function fetchCredits(id) {
-//   let targetURL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`
+//   let targetURL = `${base_url}/movie/${id}/credits?api_key=${api_key}`
 //
 //   console.log(targetURL)
 //
