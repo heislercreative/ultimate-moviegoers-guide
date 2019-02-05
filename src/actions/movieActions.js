@@ -38,7 +38,7 @@ export function fetchSearchResults(page, query) {
 
   return (dispatch) => {
     dispatch({ type: 'LOADING_MOVIES' })
-    return fetch(proxyURL + targetURL)
+    return fetch(targetURL)
       .then(resp => resp.json())
       .then(movies => dispatch({
         type: 'FETCH_MOVIES',
@@ -64,13 +64,13 @@ export function fetchSearchResults(page, query) {
 // }
 
 export function fetchMovie(id) {
-  const movie = fetch(proxyURL + `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`)
+  const movie = fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`)
     .then(resp => resp.json())
 
-  const credits = fetch(proxyURL + `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`)
+  const credits = fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`)
     .then(resp => resp.json())
 
-  const videos = fetch(proxyURL + `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}`)
+  const videos = fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}`)
     .then(resp => resp.json())
 
   return (dispatch) => {
@@ -90,7 +90,7 @@ export function fetchMovie(id) {
 //
 //   return (dispatch) => {
 //     dispatch({ type: 'LOADING_CREDITS' })
-//     return fetch(proxyURL + targetURL)
+//     return fetch(targetURL)
 //       .then(resp => resp.json())
 //       .then(credits => dispatch({
 //         type: 'FETCH_CREDITS',
