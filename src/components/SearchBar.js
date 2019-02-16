@@ -46,9 +46,6 @@ class SearchBar extends Component {
   }
 
   render() {
-    // if (this.state.redirect) {
-    //   return <Redirect to={`/search/${this.state.query}`} key={this.state.query}/>
-    // }
 
     return(
       <div>
