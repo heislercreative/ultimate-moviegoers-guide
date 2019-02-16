@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { Input, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -9,42 +10,60 @@ class SearchBar extends Component {
   constructor() {
     super()
     this.state = {
-      text: ''
+      text: '',
+      query: '',
+      redirect: false
     }
   }
 
   handleChange = (e) => {
+    this.setState({ text: e.target.value })
+  }
+
+  setQuery = () => {
     this.setState({
-      text: e.target.value
+      query: this.state.text.replace(/ /g,'+'),
+      redirect: true
     })
   }
 
-  querify = (query) => {
-    window.location.href = `/search/${query.replace(/ /g,'+')}`
+  renderRedirect = () => {
+    this.setState({
+      text: '',
+      redirect: false
+    })
+    return <Redirect to={`/search/${this.state.query}`}/>
   }
 
   handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      this.querify(this.state.text)
+      this.setQuery()
     }
   }
 
   handleClick = () => {
-    this.querify(this.state.text)
+    this.setQuery()
   }
 
   render() {
+    // if (this.state.redirect) {
+    //   return <Redirect to={`/search/${this.state.query}`} key={this.state.query}/>
+    // }
+
     return(
-      <Input
-        name='text'
-        type='text'
-        placeholder='Search movies...'
-        icon={<Icon name='search' link onClick={this.handleClick}/>}
-        value={this.state.text}
-        onChange={this.handleChange}
-        onKeyPress={this.handleKeyPress}
-        className='search-bar'
-      />
+      <div>
+        {this.state.redirect && this.renderRedirect()}
+        <Input
+          name='text'
+          type='text'
+          placeholder='Search movies...'
+          icon={<Icon name='search' link onClick={this.handleClick}/>}
+          value={this.state.text}
+          onChange={this.handleChange}
+          onKeyPress={this.handleKeyPress}
+          className='search-bar'
+        />
+      </div>
     )
   }
 }

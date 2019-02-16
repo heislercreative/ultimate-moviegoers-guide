@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Segment, Image } from 'semantic-ui-react'
 
 import placeholder from '../images/placeholder.jpg'
@@ -6,7 +7,7 @@ import placeholder from '../images/placeholder.jpg'
 const MovieBasic = ({ id, title, release_date, poster_path, rating, overview }) => {
   return (
     <div className='movie-div'>
-      <a href={`/movies/${id}`}>
+      <Link to={`/movies/${id}`}>
         <Segment floated='left' className='movie-card'>
           {poster_path ?
             <Image src={poster_path} size='small' floated='left' className='poster-thumb'/> :
@@ -20,7 +21,7 @@ const MovieBasic = ({ id, title, release_date, poster_path, rating, overview }) 
             <p>{overview}</p>
           </div>
         </Segment>
-      </a>
+      </Link>
     </div>
   )
 }

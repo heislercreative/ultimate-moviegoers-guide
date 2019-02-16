@@ -25,6 +25,12 @@ class MoviesList extends Component {
     this.setState({ loaded: true })
   }
 
+  async componentDidUpdate(previousProps) {
+    if (previousProps.query !== this.props.query) {
+      await this.props.actions.fetchSearchResults(1, this.props.query)
+    }
+  }
+
   navigate = async (direction) => {
     this.setState({ loaded: false })
     if (this.props.type === 'search') {
