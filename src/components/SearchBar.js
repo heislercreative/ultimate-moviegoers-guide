@@ -32,7 +32,7 @@ class SearchBar extends Component {
       text: '',
       redirect: false
     })
-    return <Redirect to={`/search/${this.state.query}`}/>
+    return <Redirect push to={`/search/${this.state.query}`}/>
   }
 
   handleKeyPress = (e) => {
