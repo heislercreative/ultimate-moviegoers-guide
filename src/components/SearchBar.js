@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Input, Icon } from 'semantic-ui-react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as actions from '../actions/movieActions'
 
 class SearchBar extends Component {
 
@@ -65,8 +62,4 @@ class SearchBar extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(actions, dispatch) }
-}
-
-export default connect(null, mapDispatchToProps)(SearchBar)
+export default SearchBar
