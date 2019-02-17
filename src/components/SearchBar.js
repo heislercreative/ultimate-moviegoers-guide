@@ -17,14 +17,10 @@ class SearchBar extends Component {
   }
 
   renderSearch = async () => {
-    await this.setState({
-      query: this.state.text.replace(/ /g,'+'),
-    })
+    await this.setState({ query: this.state.text.replace(/ /g,'+') })
     if (this.state.query !== '') {
       this.props.history.push(`/search/${this.state.query}`)
-      this.setState({
-        text: ''
-      })
+      this.setState({ text: '' })
     }
   }
 
