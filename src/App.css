@@ -3,10 +3,8 @@
 }
 
 .App-header {
-  margin-top: -15px;
-  margin-bottom: 20px;
-  padding-top: 20px;
-  background-color: #bbb;
+  margin-top: 10px;
+  margin-bottom: 10px;
   min-height: 15vh;
   display: flex;
   flex-direction: column;
@@ -157,6 +155,10 @@
 }
 
 .logo {
+  max-width: 300px;
+}
+
+.tmdb-logo {
   width: 130px;
   margin-bottom: 30px;
 }

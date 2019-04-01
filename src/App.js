@@ -8,6 +8,7 @@ import NowPlaying from './containers/NowPlaying'
 import Upcoming from './containers/Upcoming'
 import SearchResults from './containers/SearchResults'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route path='/upcoming' component={Upcoming} />
           <Route path={'/movies/:movieId'} component={MovieFull} />
           <Route path={'/search/:query'} component={SearchResults} />
+          <Footer />
         </div>
       </Router>
     );
