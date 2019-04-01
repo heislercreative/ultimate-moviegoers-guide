@@ -21,7 +21,7 @@ class Upcoming extends Component {
   render() {
     return (
       <div>
-        <h2>Upcoming Movies</h2>
+        <h2 class='title'>Upcoming Movies</h2>
         {this.state.loaded ?
           <MoviesList type={'upcoming'} /> : null
         }
