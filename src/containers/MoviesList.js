@@ -72,6 +72,7 @@ class MoviesList extends Component {
               status={movie.status}
             />
           )}
+          {(type === 'search' && movies.length === 0) && <h3>Sorry, no results matched your search.</h3>}
           <ListNavigation
             current_page={current_page}
             total_pages={total_pages}
