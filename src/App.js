@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
 
 import MainMenu from './components/MainMenu'
@@ -17,11 +17,14 @@ class App extends Component {
         <div className="App">
           <MainMenu />
           <Header />
-          <Route exact path='/' component={NowPlaying} />
-          <Route exact path='/now-playing' component={NowPlaying} />
-          <Route path='/upcoming' component={Upcoming} />
-          <Route path={'/movies/:movieId'} component={MovieFull} />
-          <Route path={'/search/:query'} component={SearchResults} />
+          <Switch>
+            <Route exact path='/' component={NowPlaying} />
+            <Route exact path='/now-playing' component={NowPlaying} />
+            <Route path='/upcoming' component={Upcoming} />
+            <Route path={'/movies/:movieId'} component={MovieFull} />
+            <Route path={'/search/:query'} component={SearchResults} />
+            <Route component={NowPlaying} />
+          </Switch>
           <Footer />
         </div>
       </Router>
