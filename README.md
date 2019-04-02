@@ -5,7 +5,7 @@ Movie listings React app with sorting, filters, and search features. Powered by 
 ## Installation & Usage
 
 1) To start using the app, clone and fetch the repository.
-2) Run `npm install` to install Node dependencies.
+2) Run `yarn install` to install Node dependencies.
 3) An API key for The Movie Database is required to access movie data. [Sign up](https://www.themoviedb.org/account/signup) for a TMDB account. Once logged in, go to _Settings_ -> [_API_](https://www.themoviedb.org/settings/api) and create an API application. Be sure to make it a personal application. If you do not have a website url, you can [create a free github page](https://pages.github.com/).
 4) Once you have an API key, create a _.env_ file in the root directory of the app and add the line: `REACT_APP_API_KEY=` with your API key following the equal sign.
 5) Run `yarn start` to launch the client. Navigate to http://localhost:3000 to view the app.
