@@ -21,7 +21,7 @@ class NowPlaying extends Component {
   render() {
     return (
       <div>
-        <h2 class='title'>Now Playing</h2>
+        <h2 className='title'>Now Playing</h2>
         {this.state.loaded ?
           <MoviesList type={'now_playing'} /> : null
         }

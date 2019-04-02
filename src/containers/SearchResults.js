@@ -10,7 +10,7 @@ class SearchResults extends Component {
 
     return (
       <div>
-        <h2 class='title'>Search Results</h2>
+        <h2 className='title'>Search Results</h2>
         <MoviesList type={'search'} query={query}/>
       </div>
     )
