@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
 
 import MainMenu from './components/MainMenu'
-import MovieFull from './components/MovieFull'
 import NowPlaying from './containers/NowPlaying'
 import Upcoming from './containers/Upcoming'
 import SearchResults from './containers/SearchResults'
+import MovieFull from './components/MovieFull'
+import Person from './components/Person'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -23,6 +24,7 @@ class App extends Component {
             <Route path='/upcoming' component={Upcoming} />
             <Route path={'/movies/:movieId'} component={MovieFull} />
             <Route path={'/search/:query'} component={SearchResults} />
+            <Route path={'/person/:personId'} component={Person} />
             <Route component={NowPlaying} />
           </Switch>
           <Footer />

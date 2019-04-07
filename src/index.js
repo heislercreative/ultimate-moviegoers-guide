@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux'
-import rootReducer from './reducers/rootReducer'
+import moviesReducer from './reducers/moviesReducer'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import 'semantic-ui-css/semantic.css'

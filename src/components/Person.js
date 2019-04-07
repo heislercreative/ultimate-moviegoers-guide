@@ -28,8 +28,8 @@ class Person extends Component {
       <div>
       {this.state.loaded ?
         <Segment className='page-container' padded='very'  textAlign='left' >
-          <h1>{name} ({release_date.slice(0,4)})</h1>
-          <img src={profile_path} className='poster-full' alt={title}/>
+          <h1>{name}</h1>
+          <img src={profile_path} className='poster-full' alt={name}/>
           <div className='movie-details'>
             <span><strong>Born &nbsp;|&nbsp;</strong> {birthday}</span>
             <br/><br/>
