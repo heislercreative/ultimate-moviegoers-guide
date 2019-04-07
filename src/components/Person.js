@@ -21,9 +21,8 @@ class Person extends Component {
   }
 
   render() {
-    const { name, profile_path, birthday, deathday, biography } = this.props.movie.details
-    const { cast, crew } = this.props.movie.credits
-    const videos = this.props.movie.videos
+    const { name, profile_path, birthday, deathday, biography, gender } = this.props.person.details
+    const { cast, crew } = this.props.person.credits
 
     return (
       <div>
@@ -43,11 +42,14 @@ class Person extends Component {
             </div>
           }
           <Divider hidden clearing/>
-          {cast.length > 0 &&
-            <CreditsList credits={cast} title={'Cast'}/>
+          {(cast.length > 0 && gender === 1 ) &&
+            <CreditsList credits={cast} title={'Actress'}/>
+          }
+          {(cast.length > 0 && gender === 2 ) &&
+            <CreditsList credits={cast} title={'Actor'}/>
           }
           {crew.length > 0 &&
-            <CreditsList credits={crew} title={'Crew'}/>
+            <CreditsList credits={crew} title={'Crew Member'}/>
           }
         </Segment>
         :
