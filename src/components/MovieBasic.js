@@ -7,7 +7,7 @@ import placeholder from '../images/placeholder.jpg'
 const MovieBasic = ({ id, title, release_date, poster_path, rating, overview }) => {
   return (
     <div className='movie-div'>
-      <Link to={`/movies/${id}`}>
+      <Link to={`/movie/${id}`}>
         <Segment floated='left' className='movie-card'>
           {poster_path ?
             <Image src={poster_path} size='small' floated='left' className='poster-thumb'/> :

@@ -65,7 +65,7 @@ class Person extends Component {
 function mapStateToProps(state, ownProps) {
   return {
     id: ownProps.match.params.personId,
-    person: state.selected_person
+    person: state.person
   }
 }
 

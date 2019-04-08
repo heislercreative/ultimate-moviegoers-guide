@@ -44,7 +44,7 @@ class MoviesList extends Component {
   }
 
   render() {
-    const { type, movies, current_page, total_pages, total_results, sort_title } = this.props
+    const { type, results, current_page, total_pages, total_results, sort_title } = this.props
 
     return (
       <div>
@@ -59,7 +59,7 @@ class MoviesList extends Component {
             nextPage={() => this.navigate(1)}
             type={type}
           />
-          {movies.map(movie =>
+          {results.map(movie =>
             <MovieBasic
               key={movie.id}
               id={movie.id}
@@ -72,7 +72,7 @@ class MoviesList extends Component {
               status={movie.status}
             />
           )}
-          {(type === 'search' && movies.length === 0) && <h3>Sorry, no results matched your search.</h3>}
+          {(type === 'search' && results.length === 0) && <h3>Sorry, no results matched your search.</h3>}
           <ListNavigation
             current_page={current_page}
             total_pages={total_pages}
@@ -94,14 +94,14 @@ class MoviesList extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    sort_by: state.sort_by,
-    sort_title: state.sort_title,
-    current_page: state.current_page,
-    total_results: state.total_results,
-    total_pages: state.total_pages,
-    min: state.min,
-    max: state.max,
-    movies: state.movies
+    sort_by: state.movies.sort_by,
+    sort_title: state.movies.sort_title,
+    current_page: state.movies.current_page,
+    total_results: state.movies.total_results,
+    total_pages: state.movies.total_pages,
+    min: state.movies.min,
+    max: state.movies.max,
+    results: state.movies.results
   }
 }
 

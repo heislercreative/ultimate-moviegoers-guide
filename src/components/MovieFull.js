@@ -77,7 +77,7 @@ class MovieFull extends Component {
 function mapStateToProps(state, ownProps) {
   return {
     id: ownProps.match.params.movieId,
-    movie: state.selected_movie
+    movie: state.movie
   }
 }
 

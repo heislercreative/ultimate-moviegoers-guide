@@ -22,7 +22,7 @@ class App extends Component {
             <Route exact path='/' component={NowPlaying} />
             <Route exact path='/now-playing' component={NowPlaying} />
             <Route path='/upcoming' component={Upcoming} />
-            <Route path={'/movies/:movieId'} component={MovieFull} />
+            <Route path={'/movie/:movieId'} component={MovieFull} />
             <Route path={'/search/:query'} component={SearchResults} />
             <Route path={'/person/:personId'} component={Person} />
             <Route component={NowPlaying} />

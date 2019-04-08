@@ -44,9 +44,9 @@ class SortList extends Component {
 }
 function mapStateToProps(state) {
   return {
-    sort_by: state.sort_by,
-    min: state.min,
-    max: state.max
+    sort_by: state.movies.sort_by,
+    min: state.movies.min,
+    max: state.movies.max
   }
 }
 

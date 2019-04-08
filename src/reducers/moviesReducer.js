@@ -1,17 +1,6 @@
 export default function moviesReducer(state = {
-  sort_by: '',
   sort_title: 'Most Popular',
-  current_page: '',
-  total_results: '',
-  total_pages: '',
-  min: '',
-  max: '',
-  movies: [],
-  selected_movie: {
-    details: {},
-    credits: {},
-    videos: {}
-  }
+  sort_by: 'popularity.desc'
 }, action) {
   switch (action.type) {
 
@@ -26,72 +15,8 @@ export default function moviesReducer(state = {
         current_page: action.payload.page,
         total_results: action.payload.total_results,
         total_pages: action.payload.total_pages,
-        movies: action.payload.results
+        results: action.payload.results
       }
-
-    // case 'FETCH_MOVIE':
-    //   const movie = action.payload
-    //   movie.poster_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
-    //   return {
-    //     ...state,
-    //     selected_movie: {
-    //       ...state.selected_movie,
-    //       details: movie
-    //     }
-    //   }
-
-    case 'FETCH_MOVIE_WITH_CREDITS_AND_VIDEOS':
-      const movie = action.payload[0]
-      const credits = action.payload[1]
-      const videos = action.payload[2]
-
-      movie.poster_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
-
-      credits.cast.forEach(cast => {
-        if (cast.profile_path) {
-          cast.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${cast.profile_path}`
-        }
-      })
-      credits.crew.forEach(crew => {
-        if (crew.profile_path) {
-          crew.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${crew.profile_path}`
-        }
-      })
-
-      videos.results.forEach(video => {
-        if (video.site === 'YouTube') {
-          video.embed_path = `https://youtube.com/embed/${video.key}`
-          video.link_path = `https://youtube.com/watch?v=${video.key}`
-        }
-      })
-
-      return {
-        ...state,
-        selected_movie: {
-          details: movie,
-          credits: credits,
-          videos: videos.results
-        }
-      }
-
-    // case 'FETCH_CREDITS':
-    //   action.payload.cast.map(cast => {
-    //     if (cast.profile_path) {
-    //       cast.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${cast.profile_path}`
-    //     }
-    //   })
-    //   action.payload.crew.map(crew => {
-    //     if (crew.profile_path) {
-    //       crew.profile_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${crew.profile_path}`
-    //     }
-    //   })
-    //   return {
-    //     ...state,
-    //     selected_movie: {
-    //       ...state.selected_movie,
-    //       credits: action.payload
-    //     }
-    //   }
 
     case 'SET_SORT_METHOD':
       let sort_title = ''
