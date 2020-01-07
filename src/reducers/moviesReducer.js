@@ -16,7 +16,8 @@ export default function moviesReducer(state = {
   switch (action.type) {
 
     case 'FETCH_MOVIES':
-      action.payload.results.forEach(movie => {
+      const filteredMovies = action.payload.results.filter(movie => !!movie)
+      filteredMovies.forEach(movie => {
         if (movie.poster_path) {
           movie.poster_path = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
         }
@@ -26,7 +27,7 @@ export default function moviesReducer(state = {
         current_page: action.payload.page,
         total_results: action.payload.total_results,
         total_pages: action.payload.total_pages,
-        movies: action.payload.results
+        movies: filteredMovies
       }
 
     // case 'FETCH_MOVIE':
