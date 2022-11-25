@@ -2,6 +2,9 @@
   "name": "ulimate-moviegoers-guide",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "dotenv": "^6.2.0",
     "react": "^16.7.0",
